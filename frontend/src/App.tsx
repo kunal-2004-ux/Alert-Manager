@@ -22,11 +22,6 @@ const App: React.FC = () => {
             setSummary(summaryRes.data);
             setDrivers(driversRes.data);
             setAutoClosed(autoClosedRes.data);
-
-            // Debug logging
-            console.log('Summary:', summaryRes.data);
-            console.log('Drivers:', driversRes.data);
-            console.log('Auto-closed:', autoClosedRes.data);
         } catch (error) {
             console.error('Error fetching dashboard data:', error);
         }

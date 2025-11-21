@@ -29,10 +29,10 @@ const AutoClosedTable: React.FC<AutoClosedProps> = ({ alerts }) => {
                         const closedEntry = alert.history.find((h: any) => h.to === 'AUTO_CLOSED');
                         return (
                             <tr key={alert.id}>
-                                <td>{alert.id.substring(0, 8)}...</td>
-                                <td>{alert.sourceType}</td>
-                                <td>{new Date(alert.timestamp).toLocaleString()}</td>
-                                <td>{closedEntry?.reason || 'N/A'}</td>
+                                <td style={{ color: '#333', fontWeight: '500' }}>{alert.id.substring(0, 8)}...</td>
+                                <td style={{ color: '#333', fontWeight: '500' }}>{alert.sourceType}</td>
+                                <td style={{ color: '#333', fontWeight: '500' }}>{new Date(alert.timestamp).toLocaleString()}</td>
+                                <td style={{ color: '#333', fontWeight: '500' }}>{closedEntry?.reason || 'N/A'}</td>
                             </tr>
                         );
                     })}
