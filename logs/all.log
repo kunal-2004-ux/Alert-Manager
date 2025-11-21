@@ -1,0 +1,335 @@
+2025-11-21 20:22:12:2212 [32minfo[39m: [32mServer is running on port 3000[39m
+2025-11-21 20:22:32:2232 [35mhttp[39m: [35mGET /health[39m
+2025-11-21 20:25:37:2537 [32minfo[39m: [32mServer is running on port 3000[39m
+2025-11-21 20:26:15:2615 [35mhttp[39m: [35mGET /[39m
+2025-11-21 20:26:15:2615 [35mhttp[39m: [35mGET /[39m
+2025-11-21 21:48:34:4834 [31merror[39m: [31mWorker run failed[39m
+2025-11-21 21:48:35:4835 [31merror[39m: [31mWorker run failed[39m
+2025-11-22 00:09:39:939 [32minfo[39m: [32mServer is running on port 3000[39m
+2025-11-22 00:09:39:939 [32minfo[39m: [32mBackground worker scheduled (every 5 mins).[39m
+2025-11-22 00:10:00:100 [32minfo[39m: [32mRunning scheduled alert processing task...[39m
+2025-11-22 00:10:00:100 [32minfo[39m: [32mWorker run started[39m
+2025-11-22 00:10:00:100 [32minfo[39m: [32mScanning alerts for auto-closure[39m
+2025-11-22 00:10:00:100 [32minfo[39m: [32mRules loaded successfully[39m
+2025-11-22 00:10:00:100 [32minfo[39m: [32mWorker run completed[39m
+2025-11-22 00:10:11:1011 [35mhttp[39m: [35mGET /[39m
+2025-11-22 00:10:12:1012 [35mhttp[39m: [35mGET /[39m
+2025-11-22 00:10:18:1018 [35mhttp[39m: [35mGET /[39m
+2025-11-22 00:10:18:1018 [35mhttp[39m: [35mGET /[39m
+2025-11-22 00:11:26:1126 [35mhttp[39m: [35mGET /health[39m
+2025-11-22 00:13:52:1352 [35mhttp[39m: [35mPOST /api/alerts[39m
+2025-11-22 00:13:52:1352 [32minfo[39m: [32mAlert created[39m
+2025-11-22 00:13:52:1352 [32minfo[39m: [32mEvaluating escalation rule[39m
+2025-11-22 00:13:52:1352 [31merror[39m: [31mFailed to apply escalation rules: [39m
+[31mInvalid `prisma.alert.count()` invocation in[39m
+[31mD:\moveinsync_assignment\src\repositories\alertRepository.ts:38:29[39m
+
+[31m  35     };[39m
+[31m  36 }[39m
+[31m  37 [39m
+[31m→ 38 return prisma.alert.count({[39m
+[31m       select: {[39m
+[31m         _count: {[39m
+[31m           select: {[39m
+[31m             _all: true[39m
+[31m           }[39m
+[31m         }[39m
+[31m       },[39m
+[31m       where: {[39m
+[31m         sourceType: "overspeed",[39m
+[31m         timestamp: {[39m
+[31m           gte: new Date("2025-11-21T23:00:00.000Z")[39m
+[31m         },[39m
+[31m         metadata: {[39m
+[31m           contains: {[39m
+[31m           ~~~~~~~~[39m
+[31m             driverId: "D123"[39m
+[31m           },[39m
+[31m     ?     equals?: Json | JsonFieldRefInput | JsonNullValueFilter,[39m
+[31m     ?     path?: String[],[39m
+[31m     ?     mode?: QueryMode | EnumQueryModeFieldRefInput,[39m
+[31m     ?     string_contains?: String | StringFieldRefInput,[39m
+[31m     ?     string_starts_with?: String | StringFieldRefInput,[39m
+[31m     ?     string_ends_with?: String | StringFieldRefInput,[39m
+[31m     ?     array_starts_with?: Json | JsonFieldRefInput | Null,[39m
+[31m     ?     array_ends_with?: Json | JsonFieldRefInput | Null,[39m
+[31m     ?     array_contains?: Json | JsonFieldRefInput | Null,[39m
+[31m     ?     lt?: Json | JsonFieldRefInput,[39m
+[31m     ?     lte?: Json | JsonFieldRefInput,[39m
+[31m     ?     gt?: Json | JsonFieldRefInput,[39m
+[31m     ?     gte?: Json | JsonFieldRefInput,[39m
+[31m     ?     not?: Json | JsonFieldRefInput | JsonNullValueFilter[39m
+[31m         }[39m
+[31m       }[39m
+[31m     })[39m
+
+[31mUnknown argument `contains`. Available options are marked with ?.[39m
+2025-11-22 00:14:36:1436 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:14:36:1436 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:14:36:1436 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:14:36:1436 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:14:36:1436 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:14:36:1436 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:14:57:1457 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:14:57:1457 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:14:57:1457 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=7d[39m
+2025-11-22 00:15:00:150 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:15:00:150 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:15:00:150 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:15:00:150 [32minfo[39m: [32mRunning scheduled alert processing task...[39m
+2025-11-22 00:15:00:150 [32minfo[39m: [32mWorker run started[39m
+2025-11-22 00:15:00:150 [32minfo[39m: [32mScanning alerts for auto-closure[39m
+2025-11-22 00:15:00:150 [32minfo[39m: [32mWorker run completed[39m
+2025-11-22 00:15:30:1530 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:15:30:1530 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:15:30:1530 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:16:00:160 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:16:00:160 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:16:00:160 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:16:30:1630 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:16:30:1630 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:16:30:1630 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:17:00:170 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:17:00:170 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:17:00:170 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:17:30:1730 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:17:30:1730 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:17:30:1730 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:18:00:180 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:18:00:180 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:18:00:180 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:18:16:1816 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:19:17:1917 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:19:17:1917 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:19:17:1917 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:19:18:1918 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:19:42:1942 [35mhttp[39m: [35mGET /api/alerts/c71a40ce-f6c5-4859-9a84-f48cfe15c037[39m
+2025-11-22 00:19:50:1950 [35mhttp[39m: [35mGET /api/alerts/c71a40ce-f6c5-4859-9a84-f48cfe15c037[39m
+2025-11-22 00:20:00:200 [32minfo[39m: [32mRunning scheduled alert processing task...[39m
+2025-11-22 00:20:00:200 [32minfo[39m: [32mWorker run started[39m
+2025-11-22 00:20:00:200 [32minfo[39m: [32mScanning alerts for auto-closure[39m
+2025-11-22 00:20:00:200 [32minfo[39m: [32mWorker run completed[39m
+2025-11-22 00:20:17:2017 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:20:17:2017 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:20:17:2017 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:21:17:2117 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:21:17:2117 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:21:17:2117 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:21:43:2143 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:21:43:2143 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:21:43:2143 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:22:00:220 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:22:00:220 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:22:00:220 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:22:30:2230 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:22:30:2230 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:22:30:2230 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:23:00:230 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:23:00:230 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:23:00:230 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:24:17:2417 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:24:17:2417 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:24:17:2417 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:25:00:250 [32minfo[39m: [32mRunning scheduled alert processing task...[39m
+2025-11-22 00:25:00:250 [32minfo[39m: [32mWorker run started[39m
+2025-11-22 00:25:00:250 [32minfo[39m: [32mScanning alerts for auto-closure[39m
+2025-11-22 00:25:00:250 [32minfo[39m: [32mWorker run completed[39m
+2025-11-22 00:25:17:2517 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:25:17:2517 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:25:17:2517 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:25:34:2534 [35mhttp[39m: [35mGET /api/dashboard/alerts/c71a40ce-f6c5-4859-9a84-f48cfe15c037[39m
+2025-11-22 00:26:17:2617 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:26:17:2617 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:26:17:2617 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:27:17:2717 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:27:17:2717 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:27:17:2717 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:27:26:2726 [35mhttp[39m: [35mPOST /api/alerts[39m
+2025-11-22 00:27:26:2726 [32minfo[39m: [32mAlert created[39m
+2025-11-22 00:27:26:2726 [32minfo[39m: [32mEvaluating escalation rule[39m
+2025-11-22 00:27:26:2726 [31merror[39m: [31mFailed to apply escalation rules: [39m
+[31mInvalid `prisma.alert.count()` invocation in[39m
+[31mD:\moveinsync_assignment\src\repositories\alertRepository.ts:38:29[39m
+
+[31m  35     };[39m
+[31m  36 }[39m
+[31m  37 [39m
+[31m→ 38 return prisma.alert.count({[39m
+[31m       select: {[39m
+[31m         _count: {[39m
+[31m           select: {[39m
+[31m             _all: true[39m
+[31m           }[39m
+[31m         }[39m
+[31m       },[39m
+[31m       where: {[39m
+[31m         sourceType: "overspeed",[39m
+[31m         timestamp: {[39m
+[31m           gte: new Date("2025-11-21T23:20:00.000Z")[39m
+[31m         },[39m
+[31m         metadata: {[39m
+[31m           contains: {[39m
+[31m           ~~~~~~~~[39m
+[31m             driverId: "D123"[39m
+[31m           },[39m
+[31m     ?     equals?: Json | JsonFieldRefInput | JsonNullValueFilter,[39m
+[31m     ?     path?: String[],[39m
+[31m     ?     mode?: QueryMode | EnumQueryModeFieldRefInput,[39m
+[31m     ?     string_contains?: String | StringFieldRefInput,[39m
+[31m     ?     string_starts_with?: String | StringFieldRefInput,[39m
+[31m     ?     string_ends_with?: String | StringFieldRefInput,[39m
+[31m     ?     array_starts_with?: Json | JsonFieldRefInput | Null,[39m
+[31m     ?     array_ends_with?: Json | JsonFieldRefInput | Null,[39m
+[31m     ?     array_contains?: Json | JsonFieldRefInput | Null,[39m
+[31m     ?     lt?: Json | JsonFieldRefInput,[39m
+[31m     ?     lte?: Json | JsonFieldRefInput,[39m
+[31m     ?     gt?: Json | JsonFieldRefInput,[39m
+[31m     ?     gte?: Json | JsonFieldRefInput,[39m
+[31m     ?     not?: Json | JsonFieldRefInput | JsonNullValueFilter[39m
+[31m         }[39m
+[31m       }[39m
+[31m     })[39m
+
+[31mUnknown argument `contains`. Available options are marked with ?.[39m
+2025-11-22 00:27:26:2726 [35mhttp[39m: [35mPOST /api/alerts[39m
+2025-11-22 00:27:26:2726 [32minfo[39m: [32mAlert created[39m
+2025-11-22 00:27:26:2726 [32minfo[39m: [32mEvaluating escalation rule[39m
+2025-11-22 00:27:26:2726 [31merror[39m: [31mFailed to apply escalation rules: [39m
+[31mInvalid `prisma.alert.count()` invocation in[39m
+[31mD:\moveinsync_assignment\src\repositories\alertRepository.ts:38:29[39m
+
+[31m  35     };[39m
+[31m  36 }[39m
+[31m  37 [39m
+[31m→ 38 return prisma.alert.count({[39m
+[31m       select: {[39m
+[31m         _count: {[39m
+[31m           select: {[39m
+[31m             _all: true[39m
+[31m           }[39m
+[31m         }[39m
+[31m       },[39m
+[31m       where: {[39m
+[31m         sourceType: "overspeed",[39m
+[31m         timestamp: {[39m
+[31m           gte: new Date("2025-11-21T23:21:00.000Z")[39m
+[31m         },[39m
+[31m         metadata: {[39m
+[31m           contains: {[39m
+[31m           ~~~~~~~~[39m
+[31m             driverId: "D123"[39m
+[31m           },[39m
+[31m     ?     equals?: Json | JsonFieldRefInput | JsonNullValueFilter,[39m
+[31m     ?     path?: String[],[39m
+[31m     ?     mode?: QueryMode | EnumQueryModeFieldRefInput,[39m
+[31m     ?     string_contains?: String | StringFieldRefInput,[39m
+[31m     ?     string_starts_with?: String | StringFieldRefInput,[39m
+[31m     ?     string_ends_with?: String | StringFieldRefInput,[39m
+[31m     ?     array_starts_with?: Json | JsonFieldRefInput | Null,[39m
+[31m     ?     array_ends_with?: Json | JsonFieldRefInput | Null,[39m
+[31m     ?     array_contains?: Json | JsonFieldRefInput | Null,[39m
+[31m     ?     lt?: Json | JsonFieldRefInput,[39m
+[31m     ?     lte?: Json | JsonFieldRefInput,[39m
+[31m     ?     gt?: Json | JsonFieldRefInput,[39m
+[31m     ?     gte?: Json | JsonFieldRefInput,[39m
+[31m     ?     not?: Json | JsonFieldRefInput | JsonNullValueFilter[39m
+[31m         }[39m
+[31m       }[39m
+[31m     })[39m
+
+[31mUnknown argument `contains`. Available options are marked with ?.[39m
+2025-11-22 00:27:30:2730 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:27:30:2730 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:27:30:2730 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:27:34:2734 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:27:34:2734 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:27:34:2734 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:27:34:2734 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:27:34:2734 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:27:34:2734 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:27:43:2743 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:27:43:2743 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:27:43:2743 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:27:43:2743 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:27:43:2743 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:27:43:2743 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:28:13:2813 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:28:13:2813 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:28:13:2813 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:28:43:2843 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:28:43:2843 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:28:43:2843 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:29:13:2913 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:29:13:2913 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:29:13:2913 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:29:14:2914 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:29:43:2943 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:29:43:2943 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:29:43:2943 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:30:00:300 [32minfo[39m: [32mRunning scheduled alert processing task...[39m
+2025-11-22 00:30:00:300 [32minfo[39m: [32mWorker run started[39m
+2025-11-22 00:30:00:300 [32minfo[39m: [32mScanning alerts for auto-closure[39m
+2025-11-22 00:30:00:300 [32minfo[39m: [32mWorker run completed[39m
+2025-11-22 00:30:02:302 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:30:13:3013 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:30:13:3013 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:30:13:3013 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:30:43:3043 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:30:43:3043 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:30:43:3043 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:31:17:3117 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:31:17:3117 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:31:17:3117 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:32:09:329 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:32:09:329 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:32:09:329 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:32:12:3212 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:32:12:3212 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:32:12:3212 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:32:12:3212 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:32:12:3212 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:32:12:3212 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:32:42:3242 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:32:42:3242 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:32:42:3242 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:33:12:3312 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:33:12:3312 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:33:12:3312 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:33:42:3342 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:33:42:3342 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:33:42:3342 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:34:12:3412 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:34:12:3412 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:34:12:3412 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:34:42:3442 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:34:42:3442 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:34:42:3442 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:35:00:350 [32minfo[39m: [32mRunning scheduled alert processing task...[39m
+2025-11-22 00:35:00:350 [32minfo[39m: [32mWorker run started[39m
+2025-11-22 00:35:00:350 [32minfo[39m: [32mScanning alerts for auto-closure[39m
+2025-11-22 00:35:00:350 [32minfo[39m: [32mWorker run completed[39m
+2025-11-22 00:35:12:3512 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:35:12:3512 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:35:12:3512 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:36:17:3617 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:36:17:3617 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:36:17:3617 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:37:17:3717 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:37:17:3717 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:37:17:3717 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:37:42:3742 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:37:42:3742 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:37:42:3742 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:38:12:3812 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:38:12:3812 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:38:12:3812 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:39:17:3917 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:39:17:3917 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:39:17:3917 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m
+2025-11-22 00:40:00:400 [32minfo[39m: [32mRunning scheduled alert processing task...[39m
+2025-11-22 00:40:00:400 [32minfo[39m: [32mWorker run started[39m
+2025-11-22 00:40:00:400 [32minfo[39m: [32mScanning alerts for auto-closure[39m
+2025-11-22 00:40:00:400 [32minfo[39m: [32mWorker run completed[39m
+2025-11-22 00:40:17:4017 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-22 00:40:17:4017 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-22 00:40:17:4017 [35mhttp[39m: [35mGET /api/dashboard/auto-closed?last=24h[39m

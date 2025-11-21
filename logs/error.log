@@ -1,0 +1,134 @@
+2025-11-21 21:48:34:4834 [31merror[39m: [31mWorker run failed[39m
+2025-11-21 21:48:35:4835 [31merror[39m: [31mWorker run failed[39m
+2025-11-22 00:13:52:1352 [31merror[39m: [31mFailed to apply escalation rules: [39m
+[31mInvalid `prisma.alert.count()` invocation in[39m
+[31mD:\moveinsync_assignment\src\repositories\alertRepository.ts:38:29[39m
+
+[31m  35     };[39m
+[31m  36 }[39m
+[31m  37 [39m
+[31m→ 38 return prisma.alert.count({[39m
+[31m       select: {[39m
+[31m         _count: {[39m
+[31m           select: {[39m
+[31m             _all: true[39m
+[31m           }[39m
+[31m         }[39m
+[31m       },[39m
+[31m       where: {[39m
+[31m         sourceType: "overspeed",[39m
+[31m         timestamp: {[39m
+[31m           gte: new Date("2025-11-21T23:00:00.000Z")[39m
+[31m         },[39m
+[31m         metadata: {[39m
+[31m           contains: {[39m
+[31m           ~~~~~~~~[39m
+[31m             driverId: "D123"[39m
+[31m           },[39m
+[31m     ?     equals?: Json | JsonFieldRefInput | JsonNullValueFilter,[39m
+[31m     ?     path?: String[],[39m
+[31m     ?     mode?: QueryMode | EnumQueryModeFieldRefInput,[39m
+[31m     ?     string_contains?: String | StringFieldRefInput,[39m
+[31m     ?     string_starts_with?: String | StringFieldRefInput,[39m
+[31m     ?     string_ends_with?: String | StringFieldRefInput,[39m
+[31m     ?     array_starts_with?: Json | JsonFieldRefInput | Null,[39m
+[31m     ?     array_ends_with?: Json | JsonFieldRefInput | Null,[39m
+[31m     ?     array_contains?: Json | JsonFieldRefInput | Null,[39m
+[31m     ?     lt?: Json | JsonFieldRefInput,[39m
+[31m     ?     lte?: Json | JsonFieldRefInput,[39m
+[31m     ?     gt?: Json | JsonFieldRefInput,[39m
+[31m     ?     gte?: Json | JsonFieldRefInput,[39m
+[31m     ?     not?: Json | JsonFieldRefInput | JsonNullValueFilter[39m
+[31m         }[39m
+[31m       }[39m
+[31m     })[39m
+
+[31mUnknown argument `contains`. Available options are marked with ?.[39m
+2025-11-22 00:27:26:2726 [31merror[39m: [31mFailed to apply escalation rules: [39m
+[31mInvalid `prisma.alert.count()` invocation in[39m
+[31mD:\moveinsync_assignment\src\repositories\alertRepository.ts:38:29[39m
+
+[31m  35     };[39m
+[31m  36 }[39m
+[31m  37 [39m
+[31m→ 38 return prisma.alert.count({[39m
+[31m       select: {[39m
+[31m         _count: {[39m
+[31m           select: {[39m
+[31m             _all: true[39m
+[31m           }[39m
+[31m         }[39m
+[31m       },[39m
+[31m       where: {[39m
+[31m         sourceType: "overspeed",[39m
+[31m         timestamp: {[39m
+[31m           gte: new Date("2025-11-21T23:20:00.000Z")[39m
+[31m         },[39m
+[31m         metadata: {[39m
+[31m           contains: {[39m
+[31m           ~~~~~~~~[39m
+[31m             driverId: "D123"[39m
+[31m           },[39m
+[31m     ?     equals?: Json | JsonFieldRefInput | JsonNullValueFilter,[39m
+[31m     ?     path?: String[],[39m
+[31m     ?     mode?: QueryMode | EnumQueryModeFieldRefInput,[39m
+[31m     ?     string_contains?: String | StringFieldRefInput,[39m
+[31m     ?     string_starts_with?: String | StringFieldRefInput,[39m
+[31m     ?     string_ends_with?: String | StringFieldRefInput,[39m
+[31m     ?     array_starts_with?: Json | JsonFieldRefInput | Null,[39m
+[31m     ?     array_ends_with?: Json | JsonFieldRefInput | Null,[39m
+[31m     ?     array_contains?: Json | JsonFieldRefInput | Null,[39m
+[31m     ?     lt?: Json | JsonFieldRefInput,[39m
+[31m     ?     lte?: Json | JsonFieldRefInput,[39m
+[31m     ?     gt?: Json | JsonFieldRefInput,[39m
+[31m     ?     gte?: Json | JsonFieldRefInput,[39m
+[31m     ?     not?: Json | JsonFieldRefInput | JsonNullValueFilter[39m
+[31m         }[39m
+[31m       }[39m
+[31m     })[39m
+
+[31mUnknown argument `contains`. Available options are marked with ?.[39m
+2025-11-22 00:27:26:2726 [31merror[39m: [31mFailed to apply escalation rules: [39m
+[31mInvalid `prisma.alert.count()` invocation in[39m
+[31mD:\moveinsync_assignment\src\repositories\alertRepository.ts:38:29[39m
+
+[31m  35     };[39m
+[31m  36 }[39m
+[31m  37 [39m
+[31m→ 38 return prisma.alert.count({[39m
+[31m       select: {[39m
+[31m         _count: {[39m
+[31m           select: {[39m
+[31m             _all: true[39m
+[31m           }[39m
+[31m         }[39m
+[31m       },[39m
+[31m       where: {[39m
+[31m         sourceType: "overspeed",[39m
+[31m         timestamp: {[39m
+[31m           gte: new Date("2025-11-21T23:21:00.000Z")[39m
+[31m         },[39m
+[31m         metadata: {[39m
+[31m           contains: {[39m
+[31m           ~~~~~~~~[39m
+[31m             driverId: "D123"[39m
+[31m           },[39m
+[31m     ?     equals?: Json | JsonFieldRefInput | JsonNullValueFilter,[39m
+[31m     ?     path?: String[],[39m
+[31m     ?     mode?: QueryMode | EnumQueryModeFieldRefInput,[39m
+[31m     ?     string_contains?: String | StringFieldRefInput,[39m
+[31m     ?     string_starts_with?: String | StringFieldRefInput,[39m
+[31m     ?     string_ends_with?: String | StringFieldRefInput,[39m
+[31m     ?     array_starts_with?: Json | JsonFieldRefInput | Null,[39m
+[31m     ?     array_ends_with?: Json | JsonFieldRefInput | Null,[39m
+[31m     ?     array_contains?: Json | JsonFieldRefInput | Null,[39m
+[31m     ?     lt?: Json | JsonFieldRefInput,[39m
+[31m     ?     lte?: Json | JsonFieldRefInput,[39m
+[31m     ?     gt?: Json | JsonFieldRefInput,[39m
+[31m     ?     gte?: Json | JsonFieldRefInput,[39m
+[31m     ?     not?: Json | JsonFieldRefInput | JsonNullValueFilter[39m
+[31m         }[39m
+[31m       }[39m
+[31m     })[39m
+
+[31mUnknown argument `contains`. Available options are marked with ?.[39m

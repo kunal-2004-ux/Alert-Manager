@@ -1,0 +1,47 @@
+import { Request, Response, NextFunction } from 'express';
+import { AlertService } from '../../services/alertService';
+
+const alertService = new AlertService();
+
+export const getSummary = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const summary = await alertService.getDashboardSummary();
+        res.json(summary);
+    } catch (error) {
+        next(error);
+    }
+};
+
+export const getTopDrivers = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const limit = req.query.limit ? parseInt(req.query.limit as string) : 5;
+        const drivers = await alertService.getTopDrivers(limit);
+        res.json(drivers);
+    } catch (error) {
+        next(error);
+    }
+};
+
+export const getAutoClosed = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const last = req.query.last as string; // '24h' or '7d'
+        const alerts = await alertService.getAutoClosedAlerts(last);
+        res.json(alerts);
+    } catch (error) {
+        next(error);
+    }
+};
+
+export const getAlertDetails = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const { id } = req.params;
+        const alert = await alertService.getAlertDetails(id);
+        res.json(alert);
+    } catch (error: any) {
+        if (error.message === 'Alert not found') {
+            res.status(404).json({ error: error.message });
+        } else {
+            next(error);
+        }
+    }
+};

@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum AlertStatus {
+  OPEN
+  ESCALATED
+  AUTO_CLOSED
+  RESOLVED
+}
+
+model Alert {
+  id          String      @id @default(uuid())
+  sourceType  String
+  severity    String
+  timestamp   DateTime
+  status      AlertStatus
+  metadata    Json
+  receivedAt  DateTime    @default(now())
+  history     Json[]      @default([])
+  fingerprint String?     @unique
+
+  @@index([sourceType])
+  @@index([status])
+  @@index([timestamp])
+  // Indexing metadata for driverId would typically require a raw index or specific Json path support.
+  // For now, we rely on standard Jsonb capabilities.
+  // To strictly follow the requirement "index on metadata.driverId", we can use a raw SQL migration later
+  // or if using a recent PG version, a GIN index on the whole column is often sufficient for containment queries.
+  @@index([metadata], type: Gin)
+}
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  alertId   String
+  action    String
+  details   Json?
+  timestamp DateTime @default(now())
+
+  @@index([alertId])
+  @@index([timestamp])
+}
