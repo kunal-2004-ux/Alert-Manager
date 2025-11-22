@@ -16,16 +16,21 @@ export const getTopDrivers = async (req: Request, res: Response, next: NextFunct
     try {
         const limit = req.query.limit ? parseInt(req.query.limit as string) : 5;
         const drivers = await alertService.getTopDrivers(limit);
+
+        // Add no-cache headers
+        res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+        res.setHeader('Pragma', 'no-cache');
+
         res.json(drivers);
     } catch (error) {
         next(error);
     }
 };
 
-export const getAutoClosed = async (req: Request, res: Response, next: NextFunction) => {
+export const getResolved = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const last = req.query.last as string; // '24h' or '7d'
-        const alerts = await alertService.getAutoClosedAlerts(last);
+        const alerts = await alertService.getResolvedAlerts(last);
         res.json(alerts);
     } catch (error) {
         next(error);

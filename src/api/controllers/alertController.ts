@@ -27,7 +27,8 @@ export const createBatchAlerts = async (req: Request, res: Response, next: NextF
 export const resolveAlert = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const { id } = req.params;
-        const alert = await alertService.resolveAlert(id);
+        const { resolvedBy, comment } = req.body || {};
+        const alert = await alertService.resolveAlert(id, resolvedBy, comment);
         res.json(alert);
     } catch (error: any) {
         if (error.message === 'Alert not found') {

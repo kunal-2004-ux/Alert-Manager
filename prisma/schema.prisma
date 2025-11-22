@@ -16,7 +16,9 @@ enum AlertStatus {
 
 model Alert {
   id          String      @id @default(uuid())
+  driverId    String?     // Optional for backward compatibility, enforced in API
   sourceType  String
+  category    String?     // Optional for backward compatibility, enforced in API
   severity    String
   timestamp   DateTime
   status      AlertStatus

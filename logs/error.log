@@ -434,3 +434,91 @@
 2025-11-22 19:21:18:2118 [31merror[39m: [31mRequest error Invalid or missing session token[39m
 2025-11-22 19:21:18:2118 [31merror[39m: [31mRequest error Invalid or missing session token[39m
 2025-11-22 19:21:18:2118 [31merror[39m: [31mRequest error Invalid or missing session token[39m
+2025-11-22 20:07:12:712 [31merror[39m: [31mFailed to apply escalation rules: [39m
+[31mInvalid `prisma.alert.count()` invocation in[39m
+[31mD:\moveinsync_assignment\src\repositories\alertRepository.ts:47:29[39m
+
+[31m  44     };[39m
+[31m  45 }[39m
+[31m  46 [39m
+[31m→ 47 return prisma.alert.count({[39m
+[31m       select: {[39m
+[31m         _count: {[39m
+[31m           select: {[39m
+[31m             _all: true[39m
+[31m           }[39m
+[31m         }[39m
+[31m       },[39m
+[31m       where: {[39m
+[31m         sourceType: "overspeed",[39m
+[31m         timestamp: {[39m
+[31m           gte: new Date("2025-11-22T13:37:11.726Z")[39m
+[31m         },[39m
+[31m         metadata: {[39m
+[31m           contains: {[39m
+[31m           ~~~~~~~~[39m
+[31m             driverId: "D-ESC-01"[39m
+[31m           },[39m
+[31m     ?     equals?: Json | JsonFieldRefInput | JsonNullValueFilter,[39m
+[31m     ?     path?: String[],[39m
+[31m     ?     mode?: QueryMode | EnumQueryModeFieldRefInput,[39m
+[31m     ?     string_contains?: String | StringFieldRefInput,[39m
+[31m     ?     string_starts_with?: String | StringFieldRefInput,[39m
+[31m     ?     string_ends_with?: String | StringFieldRefInput,[39m
+[31m     ?     array_starts_with?: Json | JsonFieldRefInput | Null,[39m
+[31m     ?     array_ends_with?: Json | JsonFieldRefInput | Null,[39m
+[31m     ?     array_contains?: Json | JsonFieldRefInput | Null,[39m
+[31m     ?     lt?: Json | JsonFieldRefInput,[39m
+[31m     ?     lte?: Json | JsonFieldRefInput,[39m
+[31m     ?     gt?: Json | JsonFieldRefInput,[39m
+[31m     ?     gte?: Json | JsonFieldRefInput,[39m
+[31m     ?     not?: Json | JsonFieldRefInput | JsonNullValueFilter[39m
+[31m         }[39m
+[31m       }[39m
+[31m     })[39m
+
+[31mUnknown argument `contains`. Available options are marked with ?.[39m
+2025-11-22 22:26:22:2622 [31merror[39m: [31mFailed to apply escalation rules: [39m
+[31mInvalid `prisma.alert.count()` invocation in[39m
+[31mD:\moveinsync_assignment\src\repositories\alertRepository.ts:47:29[39m
+
+[31m  44     };[39m
+[31m  45 }[39m
+[31m  46 [39m
+[31m→ 47 return prisma.alert.count({[39m
+[31m       select: {[39m
+[31m         _count: {[39m
+[31m           select: {[39m
+[31m             _all: true[39m
+[31m           }[39m
+[31m         }[39m
+[31m       },[39m
+[31m       where: {[39m
+[31m         sourceType: "overspeed",[39m
+[31m         timestamp: {[39m
+[31m           gte: new Date("2025-11-22T15:56:22.404Z")[39m
+[31m         },[39m
+[31m         metadata: {[39m
+[31m           contains: {[39m
+[31m           ~~~~~~~~[39m
+[31m             driverId: "D-SIM-57"[39m
+[31m           },[39m
+[31m     ?     equals?: Json | JsonFieldRefInput | JsonNullValueFilter,[39m
+[31m     ?     path?: String[],[39m
+[31m     ?     mode?: QueryMode | EnumQueryModeFieldRefInput,[39m
+[31m     ?     string_contains?: String | StringFieldRefInput,[39m
+[31m     ?     string_starts_with?: String | StringFieldRefInput,[39m
+[31m     ?     string_ends_with?: String | StringFieldRefInput,[39m
+[31m     ?     array_starts_with?: Json | JsonFieldRefInput | Null,[39m
+[31m     ?     array_ends_with?: Json | JsonFieldRefInput | Null,[39m
+[31m     ?     array_contains?: Json | JsonFieldRefInput | Null,[39m
+[31m     ?     lt?: Json | JsonFieldRefInput,[39m
+[31m     ?     lte?: Json | JsonFieldRefInput,[39m
+[31m     ?     gt?: Json | JsonFieldRefInput,[39m
+[31m     ?     gte?: Json | JsonFieldRefInput,[39m
+[31m     ?     not?: Json | JsonFieldRefInput | JsonNullValueFilter[39m
+[31m         }[39m
+[31m       }[39m
+[31m     })[39m
+
+[31mUnknown argument `contains`. Available options are marked with ?.[39m

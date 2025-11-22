@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { SignedIn, SignedOut, SignIn, SignUp, RedirectToSignIn, UserButton, useAuth } from "@clerk/clerk-react";
 import './App.css';
-import { getSummary, getTopDrivers, getAutoClosed, getTrends, getEvents, resolveAlert, setAuthToken } from './api';
+import { getSummary, getTopDrivers, getResolved, getTrends, getEvents, resolveAlert, setAuthToken } from './api';
 import Leaderboard from './components/Leaderboard';
-import AutoClosedTable from './components/AutoClosedTable';
+import ResolvedTable from './components/ResolvedTable';
 import TrendGraph from './components/TrendGraph';
 import EventsStream from './components/EventsStream';
 import AlertModal from './components/AlertModal';
@@ -13,7 +13,7 @@ import SimulationPanel from './components/SimulationPanel';
 function Dashboard() {
     const [summary, setSummary] = useState<any>(null);
     const [topDrivers, setTopDrivers] = useState<any[]>([]);
-    const [autoClosed, setAutoClosed] = useState<any[]>([]);
+    const [resolved, setResolved] = useState<any[]>([]);
     const [trends, setTrends] = useState<any[]>([]);
     const [events, setEvents] = useState<any[]>([]);
     const [selectedAlertId, setSelectedAlertId] = useState<string | null>(null);
@@ -29,10 +29,11 @@ function Dashboard() {
             setSummary(summaryData);
 
             const driversData = await getTopDrivers();
-            setTopDrivers(driversData);
+            // Handle new response format with drivers array and updatedAt
+            setTopDrivers(driversData.drivers || driversData);
 
-            const autoClosedData = await getAutoClosed();
-            setAutoClosed(autoClosedData);
+            const resolvedData = await getResolved();
+            setResolved(resolvedData);
 
             const trendsData = await getTrends();
             setTrends(trendsData);
@@ -46,29 +47,30 @@ function Dashboard() {
 
     useEffect(() => {
         fetchData();
-        const interval = setInterval(fetchData, 30000); // Refresh every 30s
+        const interval = setInterval(fetchData, 10000); // Refresh every 10s
         return () => clearInterval(interval);
     }, []);
 
-    const handleAlertClick = (alertId: string) => {
-        // In a real app, fetch full details. For now, we might need a separate endpoint or just pass data if available.
-        // Let's assume we fetch it or find it in a list. 
-        // Since we don't have a full list in state, we might need to fetch details.
-        // For this demo, we'll just set the ID and let the modal fetch or show a placeholder.
-        // Ideally: const alert = await getAlertDetails(alertId);
-        setSelectedAlertId(alertId);
-        // Mocking the alert object for the modal for now, or fetching it if we had the endpoint ready in frontend
-        setSelectedAlert({ id: alertId, status: 'OPEN', severity: 'HIGH', sourceType: 'sensor', timestamp: new Date(), history: [], metadata: {} });
+    const handleAlertClick = async (alertId: string) => {
+        try {
+            setSelectedAlertId(alertId);
+            const alertDetails = await getAlertDetails(alertId);
+            setSelectedAlert(alertDetails);
+        } catch (error) {
+            console.error("Failed to fetch alert details:", error);
+            setSelectedAlert(null);
+        }
     };
 
-    const handleResolve = async (id: string) => {
+    const handleResolve = async (id: string, comment?: string) => {
         try {
-            await resolveAlert(id);
+            await resolveAlert(id, comment);
             setSelectedAlertId(null);
+            setSelectedAlert(null);
             fetchData(); // Refresh data
         } catch (error) {
             console.error("Failed to resolve alert:", error);
-            alert("Failed to resolve alert");
+            throw error; // Re-throw to let modal handle it
         }
     };
 
@@ -77,7 +79,6 @@ function Dashboard() {
             <header>
                 <h1>Alert Management Dashboard</h1>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                    <SimulationPanel />
                     <UserButton />
                 </div>
             </header>
@@ -114,10 +115,11 @@ function Dashboard() {
                         <Leaderboard drivers={topDrivers} onRowClick={(driverId) => console.log("Driver clicked:", driverId)} />
                     </div>
                     <div style={{ marginTop: '20px' }}>
-                        <AutoClosedTable alerts={autoClosed} onRowClick={(id) => handleAlertClick(id)} />
+                        <ResolvedTable alerts={resolved} onRowClick={(id) => handleAlertClick(id)} />
                     </div>
                 </div>
                 <div className="side-col">
+                    <SimulationPanel onAlertCreated={fetchData} />
                     <EventsStream events={events} />
                 </div>
             </div>

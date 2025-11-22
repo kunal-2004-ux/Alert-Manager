@@ -3,9 +3,27 @@
         "escalate_if_count": 3,
         "window_mins": 60
     },
-    "feedback_negative": {
+    "harsh_acceleration": {
+        "escalate_if_count": 3,
+        "window_mins": 60
+    },
+    "harsh_braking": {
+        "escalate_if_count": 3,
+        "window_mins": 60
+    },
+    "sharp_turn": {
+        "escalate_if_count": 3,
+        "window_mins": 60
+    },
+    "bad_review": {
         "escalate_if_count": 2,
         "window_mins": 1440
+    },
+    "expiring_documents": {
+        "auto_close_on": "document_renewed"
+    },
+    "pending_service": {
+        "auto_close_on": "service_completed"
     },
     "compliance": {
         "auto_close_if": "document_valid"
