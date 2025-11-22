@@ -10,15 +10,21 @@ interface Event {
 
 interface EventsStreamProps {
     events: Event[];
+    onEventClick?: (alertId: string) => void;
 }
 
-const EventsStream: React.FC<EventsStreamProps> = ({ events }) => {
+const EventsStream: React.FC<EventsStreamProps> = ({ events, onEventClick }) => {
     return (
         <div className="events-stream">
             <h3>Recent Activity</h3>
             <ul className="events-list">
                 {events.map((event) => (
-                    <li key={event.id} className="event-item">
+                    <li
+                        key={event.id}
+                        className="event-item"
+                        onClick={() => onEventClick && onEventClick(event.alertId)}
+                        style={{ cursor: 'pointer' }}
+                    >
                         <span className="event-time">{new Date(event.timestamp).toLocaleTimeString()}</span>
                         <span className="event-action">{event.action}</span>
                         <span className="event-details">

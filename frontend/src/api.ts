@@ -22,8 +22,7 @@ export const getTopDrivers = () => api.get('/dashboard/top-drivers').then(res =>
 export const getResolved = () => api.get('/dashboard/resolved').then(res => res.data);
 export const getTrends = () => api.get('/dashboard/trends').then(res => res.data);
 export const getEvents = () => api.get('/dashboard/events').then(res => res.data);
-export const resolveAlert = (id: string, comment?: string) =>
-    api.patch(`/alerts/${id}/resolve`, { comment }).then(res => res.data);
+export const resolveAlert = (id: string) => api.patch(`/alerts/${id}/resolve`).then(res => res.data);
 export const getAlertDetails = (id: string) => api.get(`/dashboard/alerts/${id}`).then(res => res.data);
 
 export default api;

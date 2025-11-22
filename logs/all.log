@@ -5048,6 +5048,7 @@
 2025-11-22 19:42:55:4255 [32minfo[39m: [32mServer is running on port 3000[39m
 2025-11-22 19:42:55:4255 [32minfo[39m: [32mBackground worker scheduled (every 5 mins).[39m
 2025-11-22 19:43:15:4315 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+<<<<<<< HEAD
 2025-11-23 00:11:05:115 [32minfo[39m: [32mServer is running on port 3000[39m
 2025-11-23 00:11:05:115 [32minfo[39m: [32mBackground worker scheduled (every 5 mins).[39m
 2025-11-23 00:11:31:1131 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
@@ -7849,3 +7850,658 @@
 2025-11-23 00:10:16:1016 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
 2025-11-23 00:10:16:1016 [35mhttp[39m: [35mGET /api/dashboard/events[39m
 >>>>>>> simulation
+2025-11-23 00:23:11:2311 [32minfo[39m: [32mServer is running on port 3000[39m
+2025-11-23 00:23:11:2311 [32minfo[39m: [32mBackground worker scheduled (every 5 mins).[39m
+2025-11-23 00:24:15:2415 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:24:15:2415 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:24:17:2417 [32minfo[39m: [32mCache MISS for key: alert_summary[39m
+2025-11-23 00:24:17:2417 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:24:17:2417 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:24:17:2417 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:24:17:2417 [32minfo[39m: [32mCache MISS for key: alert_trends_7[39m
+2025-11-23 00:24:18:2418 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:24:19:2419 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:24:19:2419 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:24:19:2419 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:24:19:2419 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:24:19:2419 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:24:19:2419 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:24:25:2425 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:24:25:2425 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:24:25:2425 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:24:25:2425 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:24:25:2425 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:24:25:2425 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:24:25:2425 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:24:35:2435 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:24:35:2435 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:24:35:2435 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:24:35:2435 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:24:35:2435 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:24:35:2435 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:24:35:2435 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:24:43:2443 [35mhttp[39m: [35mPOST /api/alerts[39m
+2025-11-23 00:24:43:2443 [32minfo[39m: [32mAlert created[39m
+2025-11-23 00:24:43:2443 [32minfo[39m: [32mInvalidated dashboard summary cache[39m
+2025-11-23 00:24:43:2443 [32minfo[39m: [32mRules loaded successfully[39m
+2025-11-23 00:24:43:2443 [32minfo[39m: [32mEvaluating escalation rule[39m
+2025-11-23 00:24:43:2443 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:24:43:2443 [32minfo[39m: [32mCache MISS for key: alert_summary[39m
+2025-11-23 00:24:43:2443 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:24:43:2443 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:24:43:2443 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:24:43:2443 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:24:43:2443 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:24:45:2445 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:24:45:2445 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:24:45:2445 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:24:45:2445 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:24:45:2445 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:24:45:2445 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:24:45:2445 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:24:48:2448 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:24:48:2448 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:24:48:2448 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:24:48:2448 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:24:48:2448 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:24:48:2448 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:24:48:2448 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:24:48:2448 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:24:48:2448 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:24:48:2448 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:24:48:2448 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:24:48:2448 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:24:48:2448 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:24:48:2448 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:24:58:2458 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:24:58:2458 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:24:58:2458 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:24:58:2458 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:24:58:2458 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:24:58:2458 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:24:58:2458 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:25:00:250 [32minfo[39m: [32mRunning Auto-Close Job...[39m
+2025-11-23 00:25:00:250 [32minfo[39m: [32mWorker run started[39m
+2025-11-23 00:25:00:250 [32minfo[39m: [32mScanning alerts for auto-closure[39m
+2025-11-23 00:25:00:250 [32minfo[39m: [32mWorker run completed[39m
+2025-11-23 00:25:08:258 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:25:08:258 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:25:08:258 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:25:08:258 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:25:08:258 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:25:08:258 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:25:08:258 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:25:18:2518 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:25:18:2518 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:25:18:2518 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:25:18:2518 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:25:19:2519 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:25:19:2519 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:25:19:2519 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:25:28:2528 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:25:28:2528 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:25:28:2528 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:25:28:2528 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:25:29:2529 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:25:29:2529 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:25:29:2529 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:25:45:2545 [32minfo[39m: [32mServer is running on port 3000[39m
+2025-11-23 00:25:45:2545 [32minfo[39m: [32mBackground worker scheduled (every 5 mins).[39m
+2025-11-23 00:25:48:2548 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:25:54:2554 [32minfo[39m: [32mCache MISS for key: alert_summary[39m
+2025-11-23 00:25:55:2555 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:25:55:2555 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:25:55:2555 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:25:55:2555 [32minfo[39m: [32mCache MISS for key: alert_trends_7[39m
+2025-11-23 00:25:55:2555 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:25:58:2558 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:25:58:2558 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:25:58:2558 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:25:58:2558 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:25:59:2559 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:25:59:2559 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:25:59:2559 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:26:08:268 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:26:08:268 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:26:08:268 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:26:08:268 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:26:09:269 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:26:09:269 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:26:09:269 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:27:18:2718 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:27:18:2718 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:27:18:2718 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:27:18:2718 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:27:18:2718 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:27:18:2718 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:27:19:2719 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:35:03:353 [32minfo[39m: [32mServer is running on port 3000[39m
+2025-11-23 00:35:03:353 [32minfo[39m: [32mBackground worker scheduled (every 5 mins).[39m
+2025-11-23 00:35:06:356 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:35:07:357 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:35:07:357 [32minfo[39m: [32mCache MISS for key: alert_summary[39m
+2025-11-23 00:35:08:358 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:35:08:358 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:35:08:358 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:35:08:358 [32minfo[39m: [32mCache MISS for key: alert_trends_7[39m
+2025-11-23 00:35:08:358 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:35:08:358 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:35:08:358 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:35:08:358 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:35:08:358 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:35:08:358 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:35:08:358 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:35:17:3517 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:35:17:3517 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:35:17:3517 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:35:17:3517 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:35:18:3518 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:35:18:3518 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:35:18:3518 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:41:31:4131 [32minfo[39m: [32mServer is running on port 3000[39m
+2025-11-23 00:41:31:4131 [32minfo[39m: [32mBackground worker scheduled (every 5 mins).[39m
+2025-11-23 00:44:18:4418 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:44:19:4419 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:44:20:4420 [32minfo[39m: [32mCache MISS for key: alert_summary[39m
+2025-11-23 00:44:20:4420 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:44:21:4421 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:44:21:4421 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:44:21:4421 [32minfo[39m: [32mCache MISS for key: alert_trends_7[39m
+2025-11-23 00:44:21:4421 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:44:21:4421 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:44:21:4421 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:44:21:4421 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:44:21:4421 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:44:21:4421 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:44:21:4421 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:44:28:4428 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:44:28:4428 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:44:28:4428 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:44:28:4428 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:44:29:4429 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:44:29:4429 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:44:29:4429 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:44:38:4438 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:44:38:4438 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:44:38:4438 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:44:38:4438 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:44:38:4438 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:44:38:4438 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:44:39:4439 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:44:42:4442 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:44:42:4442 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:44:42:4442 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:44:42:4442 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:44:42:4442 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:44:42:4442 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:44:42:4442 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:44:42:4442 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:44:42:4442 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:44:42:4442 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:44:42:4442 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:44:42:4442 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:44:42:4442 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:44:42:4442 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:44:52:4452 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:44:52:4452 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:44:52:4452 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:44:52:4452 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:44:52:4452 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:44:52:4452 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:44:52:4452 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:45:00:450 [32minfo[39m: [32mRunning Auto-Close Job...[39m
+2025-11-23 00:45:00:450 [32minfo[39m: [32mWorker run started[39m
+2025-11-23 00:45:00:450 [32minfo[39m: [32mScanning alerts for auto-closure[39m
+2025-11-23 00:45:00:450 [32minfo[39m: [32mRules loaded successfully[39m
+2025-11-23 00:45:00:450 [32minfo[39m: [32mWorker run completed[39m
+2025-11-23 00:45:02:452 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:45:02:452 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:45:02:452 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:45:02:452 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:45:02:452 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:45:02:452 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:45:02:452 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:45:12:4512 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:45:12:4512 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:45:12:4512 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:45:12:4512 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:45:12:4512 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:45:12:4512 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:45:12:4512 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:45:22:4522 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:45:22:4522 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:45:22:4522 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:45:22:4522 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:45:22:4522 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:45:22:4522 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:45:22:4522 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:45:33:4533 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:45:33:4533 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:45:33:4533 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:45:33:4533 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:45:33:4533 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:45:33:4533 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:45:33:4533 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:45:42:4542 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:45:42:4542 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:45:42:4542 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:45:42:4542 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:45:42:4542 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:45:42:4542 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:45:42:4542 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:45:52:4552 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:45:52:4552 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:45:52:4552 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:45:52:4552 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:45:52:4552 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:45:52:4552 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:45:52:4552 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:46:02:462 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:46:02:462 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:46:02:462 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:46:02:462 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:46:02:462 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:46:02:462 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:46:02:462 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:46:12:4612 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:46:12:4612 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:46:12:4612 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:46:12:4612 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:46:12:4612 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:46:12:4612 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:46:12:4612 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:46:22:4622 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:46:22:4622 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:46:22:4622 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:46:22:4622 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:46:22:4622 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:46:22:4622 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:46:22:4622 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:46:32:4632 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:46:32:4632 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:46:32:4632 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:46:32:4632 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:46:32:4632 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:46:32:4632 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:46:32:4632 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:46:42:4642 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:46:42:4642 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:46:42:4642 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:46:42:4642 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:46:42:4642 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:46:42:4642 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:46:42:4642 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:46:52:4652 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:46:52:4652 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:46:52:4652 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:46:52:4652 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:46:52:4652 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:46:52:4652 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:46:52:4652 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:47:02:472 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:47:02:472 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:47:02:472 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:47:02:472 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:47:02:472 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:47:02:472 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:47:02:472 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:47:12:4712 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:47:12:4712 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:47:12:4712 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:47:12:4712 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:47:12:4712 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:47:12:4712 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:47:12:4712 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:47:22:4722 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:47:22:4722 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:47:22:4722 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:47:22:4722 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:47:22:4722 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:47:22:4722 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:47:22:4722 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:47:32:4732 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:47:32:4732 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:47:32:4732 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:47:32:4732 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:47:32:4732 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:47:32:4732 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:47:32:4732 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:47:42:4742 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:47:42:4742 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:47:42:4742 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:47:42:4742 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:47:42:4742 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:47:42:4742 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:47:42:4742 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:47:54:4754 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:47:54:4754 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:47:54:4754 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:47:54:4754 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:47:54:4754 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:47:54:4754 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:47:54:4754 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:48:02:482 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:48:02:482 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:48:02:482 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:48:02:482 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:48:02:482 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:48:02:482 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:48:02:482 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:48:12:4812 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:48:12:4812 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:48:12:4812 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:48:12:4812 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:48:12:4812 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:48:12:4812 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:48:12:4812 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:48:22:4822 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:48:22:4822 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:48:22:4822 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:48:22:4822 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:48:23:4823 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:48:23:4823 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:48:23:4823 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:48:32:4832 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:48:32:4832 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:48:32:4832 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:48:33:4833 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:48:33:4833 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:48:33:4833 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:48:33:4833 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:48:42:4842 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:48:42:4842 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:48:42:4842 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:48:42:4842 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:48:43:4843 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:48:43:4843 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:48:43:4843 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:48:52:4852 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:48:52:4852 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:48:52:4852 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:48:52:4852 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:48:53:4853 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:48:53:4853 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:48:53:4853 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:49:02:492 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:49:02:492 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:49:02:492 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:49:02:492 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:49:03:493 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:49:03:493 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:49:03:493 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:49:12:4912 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:49:12:4912 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:49:12:4912 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:49:12:4912 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:49:13:4913 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:49:13:4913 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:49:13:4913 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:50:00:500 [32minfo[39m: [32mRunning Auto-Close Job...[39m
+2025-11-23 00:50:00:500 [32minfo[39m: [32mWorker run started[39m
+2025-11-23 00:50:00:500 [32minfo[39m: [32mScanning alerts for auto-closure[39m
+2025-11-23 00:50:00:500 [32minfo[39m: [32mWorker run completed[39m
+2025-11-23 00:50:16:5016 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:50:17:5017 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:50:17:5017 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:50:17:5017 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:50:17:5017 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:50:17:5017 [32minfo[39m: [32mCache MISS for key: alert_trends_7[39m
+2025-11-23 00:50:17:5017 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:51:15:5115 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:51:15:5115 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:51:15:5115 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:51:15:5115 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:51:16:5116 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:51:16:5116 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:51:16:5116 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:51:42:5142 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:51:42:5142 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:51:42:5142 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:51:42:5142 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:51:42:5142 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:51:42:5142 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:51:42:5142 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:51:52:5152 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:51:52:5152 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:51:52:5152 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:51:52:5152 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:51:52:5152 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:51:52:5152 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:51:52:5152 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:52:02:522 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:52:02:522 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:52:02:522 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:52:02:522 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:52:02:522 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:52:02:522 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:52:02:522 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:52:12:5212 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:52:12:5212 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:52:12:5212 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:52:12:5212 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:52:12:5212 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:52:12:5212 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:52:12:5212 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:52:22:5222 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:52:22:5222 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:52:22:5222 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:52:22:5222 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:52:23:5223 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:52:23:5223 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:52:23:5223 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:52:32:5232 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:52:32:5232 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:52:32:5232 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:52:32:5232 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:52:33:5233 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:52:33:5233 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:52:33:5233 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:52:42:5242 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:52:42:5242 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:52:42:5242 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:52:42:5242 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:52:43:5243 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:52:43:5243 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:52:43:5243 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:52:52:5252 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:52:52:5252 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:52:52:5252 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:52:52:5252 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:52:53:5253 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:52:53:5253 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:52:53:5253 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:53:02:532 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:53:02:532 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:53:02:532 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:53:03:533 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:53:03:533 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:53:03:533 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:53:03:533 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:53:12:5312 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:53:12:5312 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:53:12:5312 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:53:12:5312 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:53:13:5313 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:53:13:5313 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:53:13:5313 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:54:15:5415 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:54:15:5415 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:54:15:5415 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:54:15:5415 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:54:16:5416 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:54:16:5416 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:54:16:5416 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:55:00:550 [32minfo[39m: [32mRunning Auto-Close Job...[39m
+2025-11-23 00:55:00:550 [32minfo[39m: [32mWorker run started[39m
+2025-11-23 00:55:00:550 [32minfo[39m: [32mScanning alerts for auto-closure[39m
+2025-11-23 00:55:00:550 [32minfo[39m: [32mWorker run completed[39m
+2025-11-23 00:55:15:5515 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:55:15:5515 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:55:15:5515 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:55:16:5516 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:55:16:5516 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:55:16:5516 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:55:16:5516 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:56:15:5615 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:56:17:5617 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:56:17:5617 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:56:17:5617 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:56:17:5617 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:56:17:5617 [32minfo[39m: [32mCache MISS for key: alert_trends_7[39m
+2025-11-23 00:56:17:5617 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:57:15:5715 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:57:15:5715 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:57:15:5715 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:57:15:5715 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:57:16:5716 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:57:16:5716 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:57:16:5716 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:58:15:5815 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:58:15:5815 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:58:15:5815 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:58:15:5815 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:58:16:5816 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:58:16:5816 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:58:16:5816 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 00:59:15:5915 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 00:59:15:5915 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 00:59:15:5915 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 00:59:15:5915 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 00:59:16:5916 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 00:59:16:5916 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 00:59:16:5916 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 01:00:00:00 [32minfo[39m: [32mRunning Auto-Close Job...[39m
+2025-11-23 01:00:00:00 [32minfo[39m: [32mWorker run started[39m
+2025-11-23 01:00:00:00 [32minfo[39m: [32mScanning alerts for auto-closure[39m
+2025-11-23 01:00:00:00 [32minfo[39m: [32mWorker run completed[39m
+2025-11-23 01:00:15:015 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 01:00:15:015 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 01:00:15:015 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 01:00:15:015 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 01:00:16:016 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 01:00:16:016 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 01:00:16:016 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 01:01:15:115 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 01:01:15:115 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 01:01:15:115 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 01:01:15:115 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 01:01:16:116 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 01:01:16:116 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 01:01:16:116 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 01:02:15:215 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 01:02:25:225 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 01:02:25:225 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 01:02:25:225 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 01:02:25:225 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 01:02:25:225 [32minfo[39m: [32mCache MISS for key: alert_trends_7[39m
+2025-11-23 01:02:25:225 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 01:03:46:346 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 01:03:46:346 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 01:03:46:346 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 01:03:46:346 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 01:03:46:346 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 01:03:46:346 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 01:03:46:346 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 01:04:15:415 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 01:04:15:415 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 01:04:15:415 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 01:04:15:415 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 01:04:16:416 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 01:04:16:416 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 01:04:16:416 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 01:05:00:50 [32minfo[39m: [32mRunning Auto-Close Job...[39m
+2025-11-23 01:05:00:50 [32minfo[39m: [32mWorker run started[39m
+2025-11-23 01:05:00:50 [32minfo[39m: [32mScanning alerts for auto-closure[39m
+2025-11-23 01:05:00:50 [32minfo[39m: [32mWorker run completed[39m
+2025-11-23 01:05:15:515 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 01:05:15:515 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 01:05:15:515 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 01:05:15:515 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 01:05:16:516 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 01:05:16:516 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 01:05:16:516 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 01:06:15:615 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 01:06:15:615 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 01:06:15:615 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 01:06:15:615 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 01:06:16:616 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 01:06:16:616 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 01:06:16:616 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 01:07:15:715 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 01:07:15:715 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 01:07:15:715 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 01:07:15:715 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 01:07:16:716 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 01:07:16:716 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 01:07:16:716 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 01:08:15:815 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 01:08:16:816 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 01:08:17:817 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 01:08:17:817 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 01:08:17:817 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 01:08:17:817 [32minfo[39m: [32mCache MISS for key: alert_trends_7[39m
+2025-11-23 01:08:17:817 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 01:09:15:915 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 01:09:15:915 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 01:09:15:915 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 01:09:15:915 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 01:09:16:916 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 01:09:16:916 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 01:09:16:916 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 01:10:00:100 [32minfo[39m: [32mRunning Auto-Close Job...[39m
+2025-11-23 01:10:00:100 [32minfo[39m: [32mWorker run started[39m
+2025-11-23 01:10:00:100 [32minfo[39m: [32mScanning alerts for auto-closure[39m
+2025-11-23 01:10:00:100 [32minfo[39m: [32mWorker run completed[39m
+2025-11-23 01:10:15:1015 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 01:10:15:1015 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 01:10:15:1015 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 01:10:15:1015 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 01:10:16:1016 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 01:10:16:1016 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 01:10:16:1016 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 01:11:15:1115 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 01:11:15:1115 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 01:11:15:1115 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 01:11:15:1115 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 01:11:16:1116 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 01:11:16:1116 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 01:11:16:1116 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 01:12:16:1216 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 01:12:16:1216 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 01:12:16:1216 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 01:12:16:1216 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 01:12:16:1216 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 01:12:16:1216 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 01:12:16:1216 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 01:13:16:1316 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 01:13:16:1316 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 01:13:16:1316 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 01:13:16:1316 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 01:13:16:1316 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 01:13:16:1316 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 01:13:16:1316 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 01:14:15:1415 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 01:14:17:1417 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 01:14:17:1417 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 01:14:17:1417 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 01:14:17:1417 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 01:14:17:1417 [32minfo[39m: [32mCache MISS for key: alert_trends_7[39m
+2025-11-23 01:14:17:1417 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 01:15:00:150 [32minfo[39m: [32mRunning Auto-Close Job...[39m
+2025-11-23 01:15:00:150 [32minfo[39m: [32mWorker run started[39m
+2025-11-23 01:15:00:150 [32minfo[39m: [32mScanning alerts for auto-closure[39m
+2025-11-23 01:15:00:150 [32minfo[39m: [32mWorker run completed[39m
+2025-11-23 01:15:15:1515 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 01:15:15:1515 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 01:15:15:1515 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 01:15:15:1515 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 01:15:16:1516 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 01:15:16:1516 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 01:15:16:1516 [35mhttp[39m: [35mGET /api/dashboard/events[39m
+2025-11-23 01:16:15:1615 [35mhttp[39m: [35mGET /api/dashboard/summary[39m
+2025-11-23 01:16:15:1615 [32minfo[39m: [32mCache HIT for key: alert_summary[39m
+2025-11-23 01:16:15:1615 [35mhttp[39m: [35mGET /api/dashboard/top-drivers[39m
+2025-11-23 01:16:16:1616 [35mhttp[39m: [35mGET /api/dashboard/resolved[39m
+2025-11-23 01:16:16:1616 [35mhttp[39m: [35mGET /api/dashboard/trends[39m
+2025-11-23 01:16:16:1616 [32minfo[39m: [32mCache HIT for key: alert_trends_7[39m
+2025-11-23 01:16:16:1616 [35mhttp[39m: [35mGET /api/dashboard/events[39m
