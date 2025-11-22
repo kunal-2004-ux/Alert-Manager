@@ -33,6 +33,25 @@ class CacheService {
     flush(): void {
         this.cache.flushAll();
     }
+
+    // Invalidate specific dashboard caches
+    invalidateTopDrivers(): void {
+        const keys = this.cache.keys().filter(k => k.startsWith('top_drivers_'));
+        if (keys.length > 0) {
+            this.del(keys);
+            Logger.info('Invalidated top drivers cache');
+        }
+    }
+
+    invalidateSummary(): void {
+        this.del('dashboard_summary');
+        Logger.info('Invalidated dashboard summary cache');
+    }
+
+    invalidateAll(): void {
+        this.flush();
+        Logger.info('Invalidated all dashboard caches');
+    }
 }
 
 // Export a singleton instance with default 30s TTL for dashboard data

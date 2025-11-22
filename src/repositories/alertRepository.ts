@@ -30,7 +30,7 @@ export class AlertRepository extends BaseRepository<Alert, Prisma.AlertCreateInp
         });
     }
 
-    async countAlerts(sourceType: string, startTime: Date, metadataFilter: any): Promise<number> {
+    async countAlerts(sourceType: string, startTime: Date, metadataFilter: any, driverId?: string, category?: string): Promise<number> {
         const whereClause: any = {
             sourceType,
             timestamp: {
@@ -38,7 +38,16 @@ export class AlertRepository extends BaseRepository<Alert, Prisma.AlertCreateInp
             },
         };
 
-        if (metadataFilter && Object.keys(metadataFilter).length > 0) {
+        if (category) {
+            whereClause.category = category;
+        }
+
+        if (driverId) {
+            whereClause.OR = [
+                { driverId: driverId },
+                { metadata: { path: ['driverId'], equals: driverId } }
+            ];
+        } else if (metadataFilter && Object.keys(metadataFilter).length > 0) {
             whereClause.metadata = {
                 contains: metadataFilter
             };
@@ -55,6 +64,21 @@ export class AlertRepository extends BaseRepository<Alert, Prisma.AlertCreateInp
                 status: {
                     in: [AlertStatus.OPEN, AlertStatus.ESCALATED],
                 },
+            },
+        });
+    }
+
+    async findOpenAlertsByDriverAndCategory(driverId: string, category: string): Promise<Alert[]> {
+        return prisma.alert.findMany({
+            where: {
+                status: {
+                    in: [AlertStatus.OPEN, AlertStatus.ESCALATED],
+                },
+                category: category,
+                OR: [
+                    { driverId: driverId },
+                    { metadata: { path: ['driverId'], equals: driverId } }
+                ]
             },
         });
     }
@@ -98,30 +122,33 @@ export class AlertRepository extends BaseRepository<Alert, Prisma.AlertCreateInp
     }
 
     async getTopDrivers(limit: number = 5) {
-        const cacheKey = `top_drivers_${limit}`;
-        const cached = dashboardCache.get(cacheKey);
-        if (cached) return cached;
-
-        // Using raw query for JSON aggregation
-        const result = await prisma.$queryRaw`
+        // No caching - always fetch fresh data
+        const result: any[] = await prisma.$queryRaw`
             SELECT 
-                metadata->>'driverId' as "driverId", 
-                COUNT(*)::int as "count"
+                COALESCE("driverId", metadata->>'driverId') as "driverId",
+                COUNT(*) FILTER (WHERE status = 'OPEN')::int as "openAlerts",
+                COUNT(*) FILTER (WHERE status = 'ESCALATED')::int as "escalatedAlerts",
+                COUNT(*)::int as "totalAlerts"
             FROM "Alert"
             WHERE status IN ('OPEN', 'ESCALATED')
-            AND metadata->>'driverId' IS NOT NULL
-            GROUP BY metadata->>'driverId'
-            ORDER BY "count" DESC
+            AND COALESCE("driverId", metadata->>'driverId') IS NOT NULL
+            GROUP BY COALESCE("driverId", metadata->>'driverId')
+            ORDER BY "totalAlerts" DESC
             LIMIT ${limit}
         `;
 
-        dashboardCache.set(cacheKey, result);
-        return result;
+        // Add timestamp to indicate data freshness
+        return {
+            drivers: result,
+            updatedAt: new Date().toISOString()
+        };
     }
 
-    async getAutoClosedAlerts(since?: Date) {
+    async getResolvedAlerts(since?: Date) {
         const where: any = {
-            status: AlertStatus.AUTO_CLOSED,
+            status: {
+                in: [AlertStatus.AUTO_CLOSED, AlertStatus.RESOLVED]
+            },
         };
 
         if (since) {
