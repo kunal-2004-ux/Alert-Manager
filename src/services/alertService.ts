@@ -1,9 +1,10 @@
 import { AlertRepository } from '../repositories/alertRepository';
 import { AuditRepository } from '../repositories/auditRepository';
-import { Alert, AlertStatus } from '../models/alert';
+import { Alert, AlertStatus } from '@prisma/client';
 import crypto from 'crypto';
 import { RuleLoader } from '../rules/ruleLoader';
 import Logger from '../utils/logger';
+import { BadRequestError, NotFoundError, ConflictError } from '../utils/appError';
 
 export class AlertService {
     private repository: AlertRepository;
@@ -22,7 +23,7 @@ export class AlertService {
 
     async createAlert(data: any): Promise<Alert> {
         if (!data.sourceType || !data.severity || !data.timestamp) {
-            throw new Error('Missing required fields: sourceType, severity, timestamp');
+            throw new BadRequestError('Missing required fields: sourceType, severity, timestamp');
         }
 
         const normalizedData = {
@@ -117,11 +118,11 @@ export class AlertService {
     async resolveAlert(id: string): Promise<Alert> {
         const alert = await this.repository.findById(id);
         if (!alert) {
-            throw new Error('Alert not found');
+            throw new NotFoundError('Alert not found');
         }
 
         if (alert.status === AlertStatus.AUTO_CLOSED || alert.status === AlertStatus.RESOLVED) {
-            throw new Error(`Alert is already ${alert.status}`);
+            throw new ConflictError(`Alert is already ${alert.status}`);
         }
 
         const historyEntry = {
@@ -167,7 +168,7 @@ export class AlertService {
     async getAlertDetails(id: string) {
         const alert = await this.repository.findById(id);
         if (!alert) {
-            throw new Error('Alert not found');
+            throw new NotFoundError('Alert not found');
         }
         return alert;
     }

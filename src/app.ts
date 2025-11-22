@@ -6,9 +6,7 @@ import Logger from './utils/logger';
 
 import alertRoutes from './api/routes/alertRoutes';
 import dashboardRoutes from './api/routes/dashboardRoutes';
-
-import authRoutes from './api/routes/authRoutes';
-import { authenticateToken } from './api/middlewares/authMiddleware';
+import { requireAuth } from './api/middlewares/clerkAuth';
 
 const app = express();
 
@@ -28,9 +26,8 @@ app.get('/health', (req, res) => {
 });
 
 // Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/alerts', alertRoutes); // Ingestion remains public for sensors (or use API key in future)
-app.use('/api/dashboard', authenticateToken, dashboardRoutes); // Protect dashboard
+app.use('/api/alerts', alertRoutes); // Ingestion remains public for sensors
+app.use('/api/dashboard', requireAuth, dashboardRoutes); // Protect dashboard with Clerk
 
 // Error handling
 app.use(errorHandler);

@@ -1,134 +1,167 @@
-import React, { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import api from './api';
-import SummaryCards from './components/SummaryCards';
+import { SignedIn, SignedOut, SignIn, SignUp, RedirectToSignIn, UserButton, useAuth } from "@clerk/clerk-react";
+import './App.css';
+import { getSummary, getTopDrivers, getAutoClosed, getTrends, getEvents, resolveAlert, setAuthToken } from './api';
 import Leaderboard from './components/Leaderboard';
 import AutoClosedTable from './components/AutoClosedTable';
 import TrendGraph from './components/TrendGraph';
 import EventsStream from './components/EventsStream';
 import AlertModal from './components/AlertModal';
 import SimulationPanel from './components/SimulationPanel';
-import LoginPage from './pages/LoginPage';
-import { AuthProvider, useAuth } from './context/AuthContext';
-import './App.css';
 
-const Dashboard: React.FC = () => {
+function Dashboard() {
     const [summary, setSummary] = useState<any>(null);
-    const [drivers, setDrivers] = useState<any[]>([]);
+    const [topDrivers, setTopDrivers] = useState<any[]>([]);
     const [autoClosed, setAutoClosed] = useState<any[]>([]);
     const [trends, setTrends] = useState<any[]>([]);
     const [events, setEvents] = useState<any[]>([]);
-    const [filter, setFilter] = useState('24h');
+    const [selectedAlertId, setSelectedAlertId] = useState<string | null>(null);
     const [selectedAlert, setSelectedAlert] = useState<any>(null);
-    const { logout } = useAuth();
+    const { getToken } = useAuth();
 
     const fetchData = async () => {
         try {
-            const [summaryRes, driversRes, autoClosedRes, trendsRes, eventsRes] = await Promise.all([
-                api.get('/dashboard/summary'),
-                api.get('/dashboard/top-drivers'),
-                api.get(`/dashboard/auto-closed?last=${filter}`),
-                api.get('/dashboard/trends'),
-                api.get('/dashboard/events'),
-            ]);
+            const token = await getToken();
+            setAuthToken(token); // Set token before requests
 
-            setSummary(summaryRes.data);
-            setDrivers(driversRes.data);
-            setAutoClosed(autoClosedRes.data);
-            setTrends(trendsRes.data);
-            setEvents(eventsRes.data);
+            const summaryData = await getSummary();
+            setSummary(summaryData);
+
+            const driversData = await getTopDrivers();
+            setTopDrivers(driversData);
+
+            const autoClosedData = await getAutoClosed();
+            setAutoClosed(autoClosedData);
+
+            const trendsData = await getTrends();
+            setTrends(trendsData);
+
+            const eventsData = await getEvents();
+            setEvents(eventsData);
         } catch (error) {
-            console.error('Error fetching dashboard data:', error);
+            console.error("Error fetching dashboard data:", error);
         }
     };
 
     useEffect(() => {
         fetchData();
-        const interval = setInterval(fetchData, 30000); // 30s refresh
+        const interval = setInterval(fetchData, 30000); // Refresh every 30s
         return () => clearInterval(interval);
-    }, [filter]);
+    }, []);
 
-    const handleAlertClick = async (id: string) => {
-        try {
-            const res = await api.get(`/dashboard/alert/${id}`);
-            setSelectedAlert(res.data);
-        } catch (error) {
-            console.error('Error fetching alert details:', error);
-        }
+    const handleAlertClick = (alertId: string) => {
+        // In a real app, fetch full details. For now, we might need a separate endpoint or just pass data if available.
+        // Let's assume we fetch it or find it in a list. 
+        // Since we don't have a full list in state, we might need to fetch details.
+        // For this demo, we'll just set the ID and let the modal fetch or show a placeholder.
+        // Ideally: const alert = await getAlertDetails(alertId);
+        setSelectedAlertId(alertId);
+        // Mocking the alert object for the modal for now, or fetching it if we had the endpoint ready in frontend
+        setSelectedAlert({ id: alertId, status: 'OPEN', severity: 'HIGH', sourceType: 'sensor', timestamp: new Date(), history: [], metadata: {} });
     };
 
     const handleResolve = async (id: string) => {
         try {
-            await api.patch(`/alerts/${id}/resolve`);
-            fetchData();
-            setSelectedAlert(null);
+            await resolveAlert(id);
+            setSelectedAlertId(null);
+            fetchData(); // Refresh data
         } catch (error) {
-            console.error('Error resolving alert:', error);
+            console.error("Failed to resolve alert:", error);
+            alert("Failed to resolve alert");
         }
     };
 
     return (
         <div className="dashboard">
-            <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <h1>Alert Dashboard</h1>
-                <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-                    <select value={filter} onChange={(e) => setFilter(e.target.value)}>
-                        <option value="24h">Last 24 Hours</option>
-                        <option value="7d">Last 7 Days</option>
-                    </select>
-                    <button onClick={logout} style={{ padding: '8px 16px', backgroundColor: '#ff4d4f', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Logout</button>
+            <header>
+                <h1>Alert Management Dashboard</h1>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                    <SimulationPanel />
+                    <UserButton />
                 </div>
             </header>
 
-            {summary && <SummaryCards data={summary} />}
-
-            <SimulationPanel />
+            {summary && (
+                <div className="summary-cards">
+                    <div className="card open">
+                        <h3>Open Alerts</h3>
+                        <p>{summary.byStatus.OPEN || 0}</p>
+                    </div>
+                    <div className="card critical">
+                        <h3>Critical</h3>
+                        <p>{summary.bySeverity.CRITICAL || 0}</p>
+                    </div>
+                    <div className="card warning">
+                        <h3>Warning</h3>
+                        <p>{summary.bySeverity.WARNING || 0}</p>
+                    </div>
+                    <div className="card info">
+                        <h3>Info</h3>
+                        <p>{summary.bySeverity.INFO || 0}</p>
+                    </div>
+                    <div className="card auto-closed-card" style={{ backgroundColor: '#27ae60' }}>
+                        <h3>Auto-Closed</h3>
+                        <p>{summary.byStatus.AUTO_CLOSED || 0}</p>
+                    </div>
+                </div>
+            )}
 
             <div className="grid">
                 <div className="main-col">
                     <TrendGraph data={trends} />
-                    <Leaderboard drivers={drivers} onRowClick={(driverId) => console.log(driverId)} />
-                    <AutoClosedTable alerts={autoClosed} onRowClick={handleAlertClick} />
+                    <div style={{ marginTop: '20px' }}>
+                        <Leaderboard drivers={topDrivers} onRowClick={(driverId) => console.log("Driver clicked:", driverId)} />
+                    </div>
+                    <div style={{ marginTop: '20px' }}>
+                        <AutoClosedTable alerts={autoClosed} onRowClick={(id) => handleAlertClick(id)} />
+                    </div>
                 </div>
                 <div className="side-col">
                     <EventsStream events={events} />
                 </div>
             </div>
 
-            {selectedAlert && (
+            {selectedAlertId && (
                 <AlertModal
                     alert={selectedAlert}
-                    onClose={() => setSelectedAlert(null)}
+                    onClose={() => setSelectedAlertId(null)}
                     onResolve={handleResolve}
                 />
             )}
         </div>
     );
-};
+}
 
-const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const { isAuthenticated } = useAuth();
-    return isAuthenticated ? <>{children}</> : <Navigate to="/login" />;
-};
-
-import SignupPage from './pages/SignupPage';
-
-const App: React.FC = () => {
+function App() {
     return (
-        <AuthProvider>
-            <Router>
-                <Routes>
-                    <Route path="/login" element={<LoginPage />} />
-                    <Route path="/signup" element={<SignupPage />} />
-                    <Route path="/" element={
-                        <ProtectedRoute>
-                            <Dashboard />
-                        </ProtectedRoute>
-                    } />
-                </Routes>
-            </Router>
-        </AuthProvider>
+        <Router>
+            <Routes>
+                <Route
+                    path="/"
+                    element={
+                        <>
+                            <SignedIn>
+                                <Dashboard />
+                            </SignedIn>
+                            <SignedOut>
+                                <RedirectToSignIn />
+                            </SignedOut>
+                        </>
+                    }
+                />
+                <Route
+                    path="/sign-in/*"
+                    element={<SignIn routing="path" path="/sign-in" />}
+                />
+                <Route
+                    path="/sign-up/*"
+                    element={<SignUp routing="path" path="/sign-up" />}
+                />
+                <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+        </Router>
     );
-};
+}
 
 export default App;

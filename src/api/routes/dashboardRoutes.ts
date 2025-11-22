@@ -1,7 +1,11 @@
 import { Router } from 'express';
 import { getSummary, getTopDrivers, getAutoClosed, getTrends, getEvents, getAlertDetails } from '../controllers/dashboardController';
+import { requireAuth } from '../middlewares/clerkAuth';
 
 const router = Router();
+
+// Protect all dashboard routes with Clerk
+router.use(requireAuth);
 
 router.get('/summary', getSummary);
 router.get('/top-drivers', getTopDrivers);

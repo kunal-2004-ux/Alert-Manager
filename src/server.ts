@@ -1,9 +1,21 @@
 import dotenv from 'dotenv';
 // Load env vars before importing other modules
-dotenv.config();
+const result = dotenv.config();
+if (result.error) {
+    console.error("Error loading .env file:", result.error);
+}
 
 import app from './app';
 import Logger from './utils/logger';
+
+console.log("Environment Check:");
+console.log("CLERK_SECRET_KEY present:", !!process.env.CLERK_SECRET_KEY);
+if (process.env.CLERK_SECRET_KEY) {
+    console.log("CLERK_SECRET_KEY length:", process.env.CLERK_SECRET_KEY.length);
+    console.log("CLERK_SECRET_KEY prefix:", process.env.CLERK_SECRET_KEY.substring(0, 7));
+} else {
+    console.error("CRITICAL: CLERK_SECRET_KEY is missing from process.env");
+}
 import cron from 'node-cron';
 import { AlertProcessor } from './workers/alertProcessor';
 import { CleanupService } from './services/cleanupService';

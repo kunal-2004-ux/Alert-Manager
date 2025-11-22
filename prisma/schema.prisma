@@ -33,6 +33,8 @@ model Alert {
   // To strictly follow the requirement "index on metadata.driverId", we can use a raw SQL migration later
   // or if using a recent PG version, a GIN index on the whole column is often sufficient for containment queries.
   @@index([metadata], type: Gin)
+  @@index([fingerprint, timestamp]) // Optimize escalation checks
+  @@index([status, timestamp])      // Optimize dashboard and background jobs
 }
 
 model AuditLog {
@@ -44,8 +46,6 @@ model AuditLog {
 
   @@index([alertId])
   @@index([timestamp])
-  @@index([fingerprint, timestamp]) // Optimize escalation checks
-  @@index([status, timestamp])      // Optimize dashboard and background jobs
 }
 
 model User {
