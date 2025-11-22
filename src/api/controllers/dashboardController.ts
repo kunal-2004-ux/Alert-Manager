@@ -45,3 +45,21 @@ export const getAlertDetails = async (req: Request, res: Response, next: NextFun
         }
     }
 };
+
+export const getTrends = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const trends = await alertService.getDashboardTrends();
+        res.json(trends);
+    } catch (error) {
+        next(error);
+    }
+};
+
+export const getEvents = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const events = await alertService.getRecentEvents();
+        res.json(events);
+    } catch (error) {
+        next(error);
+    }
+};

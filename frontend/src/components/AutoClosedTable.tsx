@@ -9,9 +9,10 @@ interface Alert {
 
 interface AutoClosedProps {
     alerts: Alert[];
+    onRowClick?: (alertId: string) => void;
 }
 
-const AutoClosedTable: React.FC<AutoClosedProps> = ({ alerts }) => {
+const AutoClosedTable: React.FC<AutoClosedProps> = ({ alerts, onRowClick }) => {
     return (
         <div className="auto-closed">
             <h2>Recently Auto-Closed</h2>
@@ -28,7 +29,7 @@ const AutoClosedTable: React.FC<AutoClosedProps> = ({ alerts }) => {
                     {alerts.map((alert) => {
                         const closedEntry = alert.history.find((h: any) => h.to === 'AUTO_CLOSED');
                         return (
-                            <tr key={alert.id}>
+                            <tr key={alert.id} onClick={() => onRowClick && onRowClick(alert.id)} style={{ cursor: 'pointer' }}>
                                 <td style={{ color: '#333', fontWeight: '500' }}>{alert.id.substring(0, 8)}...</td>
                                 <td style={{ color: '#333', fontWeight: '500' }}>{alert.sourceType}</td>
                                 <td style={{ color: '#333', fontWeight: '500' }}>{new Date(alert.timestamp).toLocaleString()}</td>

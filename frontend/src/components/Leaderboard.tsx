@@ -7,9 +7,10 @@ interface Driver {
 
 interface LeaderboardProps {
     drivers: Driver[];
+    onRowClick?: (driverId: string) => void;
 }
 
-const Leaderboard: React.FC<LeaderboardProps> = ({ drivers }) => {
+const Leaderboard: React.FC<LeaderboardProps> = ({ drivers, onRowClick }) => {
     return (
         <div className="leaderboard">
             <h2>Top Drivers (Open Alerts)</h2>
@@ -22,7 +23,7 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ drivers }) => {
                 </thead>
                 <tbody>
                     {drivers.map((driver, index) => (
-                        <tr key={driver.driverId || index}>
+                        <tr key={driver.driverId || index} onClick={() => onRowClick && onRowClick(driver.driverId)} style={{ cursor: 'pointer' }}>
                             <td style={{ color: '#333', fontWeight: '500' }}>{driver.driverId}</td>
                             <td style={{ color: '#333', fontWeight: '500' }}>{driver.count}</td>
                         </tr>

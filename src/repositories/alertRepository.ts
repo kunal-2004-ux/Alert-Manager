@@ -1,12 +1,11 @@
-import { PrismaClient, Alert, AlertStatus } from '@prisma/client';
+import { PrismaClient, Alert, AlertStatus, Prisma } from '@prisma/client';
+import { withRetry } from '../utils/retry';
 
 const prisma = new PrismaClient();
 
 export class AlertRepository {
-    async createAlert(data: any): Promise<Alert> {
-        return prisma.alert.create({
-            data,
-        });
+    async createAlert(data: Prisma.AlertCreateInput): Promise<Alert> {
+        return withRetry(() => prisma.alert.create({ data }));
     }
 
     async findById(id: string): Promise<Alert | null> {
@@ -81,16 +80,16 @@ export class AlertRepository {
     async getTopDrivers(limit: number = 5) {
         // Using raw query for JSON aggregation
         const result = await prisma.$queryRaw`
-            SELECT 
-                metadata->>'driverId' as "driverId", 
-                COUNT(*)::int as "count"
+SELECT
+metadata ->> 'driverId' as "driverId",
+    COUNT(*):: int as "count"
             FROM "Alert"
-            WHERE status IN ('OPEN', 'ESCALATED')
-            AND metadata->>'driverId' IS NOT NULL
-            GROUP BY metadata->>'driverId'
+            WHERE status IN('OPEN', 'ESCALATED')
+            AND metadata ->> 'driverId' IS NOT NULL
+            GROUP BY metadata ->> 'driverId'
             ORDER BY "count" DESC
             LIMIT ${limit}
-        `;
+`;
         return result;
     }
 
@@ -111,6 +110,35 @@ export class AlertRepository {
                 timestamp: 'desc',
             },
             take: 50, // Limit to recent 50
+        });
+    }
+
+    async getAlertTrends(days: number = 7) {
+        const startDate = new Date();
+        startDate.setDate(startDate.getDate() - days);
+
+        // Using raw query for date truncation (PostgreSQL specific)
+        // Aggregating by day and status
+        const result = await prisma.$queryRaw`
+SELECT
+DATE_TRUNC('day', timestamp) as "date",
+    status,
+    COUNT(*):: int as "count"
+            FROM "Alert"
+            WHERE timestamp >= ${startDate}
+            GROUP BY 1, 2
+            ORDER BY 1 ASC
+    `;
+        return result;
+    }
+
+    async getRecentEvents(limit: number = 20) {
+        // Fetching recent audit logs for a stream of events
+        return prisma.auditLog.findMany({
+            orderBy: {
+                timestamp: 'desc',
+            },
+            take: limit,
         });
     }
 }

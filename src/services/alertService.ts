@@ -171,4 +171,12 @@ export class AlertService {
         }
         return alert;
     }
+
+    async getDashboardTrends() {
+        return this.repository.getAlertTrends();
+    }
+
+    async getRecentEvents() {
+        return this.repository.getRecentEvents();
+    }
 }

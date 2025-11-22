@@ -7,6 +7,9 @@ import Logger from './utils/logger';
 import alertRoutes from './api/routes/alertRoutes';
 import dashboardRoutes from './api/routes/dashboardRoutes';
 
+import authRoutes from './api/routes/authRoutes';
+import { authenticateToken } from './api/middlewares/authMiddleware';
+
 const app = express();
 
 // Middleware
@@ -25,8 +28,9 @@ app.get('/health', (req, res) => {
 });
 
 // Routes
-app.use('/api/alerts', alertRoutes);
-app.use('/api/dashboard', dashboardRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/alerts', alertRoutes); // Ingestion remains public for sensors (or use API key in future)
+app.use('/api/dashboard', authenticateToken, dashboardRoutes); // Protect dashboard
 
 // Error handling
 app.use(errorHandler);
