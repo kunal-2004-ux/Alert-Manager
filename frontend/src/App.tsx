@@ -119,7 +119,7 @@ function Dashboard() {
                 </div>
                 <div className="side-col">
                     <SimulationPanel onAlertCreated={fetchData} />
-                    <EventsStream events={events} onEventClick={handleAlertClick} />
+                    <EventsStream events={events} onEventClick={handleAlertClick} isLoading={events.length === 0} />
                 </div>
             </div>
 
