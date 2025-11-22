@@ -3,4 +3,5 @@ dist
 .env
 .DS_Store
 coverage
-logs
+logs/all.log
+logs/error.log
