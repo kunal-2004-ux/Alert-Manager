@@ -51,26 +51,25 @@ function Dashboard() {
         return () => clearInterval(interval);
     }, []);
 
-    const handleAlertClick = async (alertId: string) => {
-        try {
-            setSelectedAlertId(alertId);
-            const alertDetails = await getAlertDetails(alertId);
-            setSelectedAlert(alertDetails);
-        } catch (error) {
-            console.error("Failed to fetch alert details:", error);
-            setSelectedAlert(null);
-        }
+    const handleAlertClick = (alertId: string) => {
+        // In a real app, fetch full details. For now, we might need a separate endpoint or just pass data if available.
+        // Let's assume we fetch it or find it in a list. 
+        // Since we don't have a full list in state, we might need to fetch details.
+        // For this demo, we'll just set the ID and let the modal fetch or show a placeholder.
+        // Ideally: const alert = await getAlertDetails(alertId);
+        setSelectedAlertId(alertId);
+        // Mocking the alert object for the modal for now, or fetching it if we had the endpoint ready in frontend
+        setSelectedAlert({ id: alertId, status: 'OPEN', severity: 'HIGH', sourceType: 'sensor', timestamp: new Date(), history: [], metadata: {} });
     };
 
-    const handleResolve = async (id: string, comment?: string) => {
+    const handleResolve = async (id: string) => {
         try {
-            await resolveAlert(id, comment);
+            await resolveAlert(id);
             setSelectedAlertId(null);
-            setSelectedAlert(null);
             fetchData(); // Refresh data
         } catch (error) {
             console.error("Failed to resolve alert:", error);
-            throw error; // Re-throw to let modal handle it
+            alert("Failed to resolve alert");
         }
     };
 
@@ -120,7 +119,7 @@ function Dashboard() {
                 </div>
                 <div className="side-col">
                     <SimulationPanel onAlertCreated={fetchData} />
-                    <EventsStream events={events} />
+                    <EventsStream events={events} onEventClick={handleAlertClick} isLoading={events.length === 0} />
                 </div>
             </div>
 

@@ -180,7 +180,7 @@ export class AlertService {
         return results;
     }
 
-    async resolveAlert(id: string, resolvedBy?: string, comment?: string): Promise<Alert> {
+    async resolveAlert(id: string): Promise<Alert> {
         const alert = await this.repository.findById(id);
         if (!alert) {
             throw new NotFoundError('Alert not found');
@@ -190,20 +190,12 @@ export class AlertService {
             throw new ConflictError(`Alert is already ${alert.status}`);
         }
 
-        const historyEntry: any = {
+        const historyEntry = {
             from: alert.status,
             to: AlertStatus.RESOLVED,
             timestamp: new Date(),
             action: 'manual_resolve'
         };
-
-        if (resolvedBy) {
-            historyEntry.resolvedBy = resolvedBy;
-        }
-
-        if (comment) {
-            historyEntry.comment = comment;
-        }
 
         const currentHistory = Array.isArray(alert.history) ? alert.history : [];
         const updatedHistory = [...currentHistory, historyEntry];
@@ -213,8 +205,8 @@ export class AlertService {
             history: updatedHistory as any
         });
 
-        Logger.info('Alert resolved', { alertId: id, previousStatus: alert.status, resolvedBy, comment });
-        await this.auditRepository.createAuditLog(id, 'RESOLVED', { from: alert.status, resolvedBy, comment });
+        Logger.info('Alert resolved', { alertId: id, previousStatus: alert.status });
+        await this.auditRepository.createAuditLog(id, 'RESOLVED', { from: alert.status });
         await this.auditRepository.createAuditLog(id, 'STATUS_CHANGED', { from: alert.status, to: 'RESOLVED' });
 
         // Invalidate caches after manual resolution
@@ -247,41 +239,7 @@ export class AlertService {
         if (!alert) {
             throw new NotFoundError('Alert not found');
         }
-
-        // Calculate eventCount for related alerts
-        const category = (alert as any).category;
-        const driverId = (alert as any).driverId || (alert.metadata as any)?.driverId;
-        const ruleLoader = RuleLoader.getInstance();
-        const rule = ruleLoader.getRule(category || alert.sourceType);
-
-        let eventCount = 0;
-        let ruleTriggered = null;
-
-        if (rule && rule.escalate_if_count && rule.window_mins && driverId && category) {
-            const windowStart = new Date(alert.timestamp.getTime() - rule.window_mins * 60 * 1000);
-            eventCount = await this.repository.countAlerts(
-                alert.sourceType,
-                windowStart,
-                {},
-                driverId,
-                category
-            );
-
-            ruleTriggered = {
-                id: category || alert.sourceType,
-                description: `${rule.escalate_if_count} ${category || alert.sourceType} alerts in ${rule.window_mins} minutes`,
-                params: {
-                    count: rule.escalate_if_count,
-                    window_mins: rule.window_mins
-                }
-            };
-        }
-
-        return {
-            ...alert,
-            eventCount,
-            ruleTriggered
-        };
+        return alert;
     }
 
     async getDashboardTrends() {
