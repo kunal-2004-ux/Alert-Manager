@@ -189,7 +189,7 @@ Follow these steps to set up the project locally.
 
 | Dashboard Overview | Alert Drill-Down |
 |:---:|:---:|
-| ![Dashboard Placeholder](https://via.placeholder.com/600x300?text=Dashboard+Screenshot) | ![Drilldown Placeholder](https://via.placeholder.com/600x300?text=Alert+Details+Screenshot) |
+| ![Dashboard Overview](docs/assets/dashboard_overview.png) | ![Dashboard Details](docs/assets/dashboard_details.png) |
 
 ## Future Enhancements
 
