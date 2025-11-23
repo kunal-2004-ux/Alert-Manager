@@ -57,6 +57,7 @@ export class AlertService {
         // Invalidate caches after alert creation
         dashboardCache.invalidateTopDrivers();
         dashboardCache.invalidateSummary();
+        dashboardCache.invalidateTrends();
 
         try {
             await this.applyEscalationRules(alert);
@@ -242,8 +243,8 @@ export class AlertService {
         return alert;
     }
 
-    async getDashboardTrends() {
-        return this.repository.getAlertTrends();
+    async getDashboardTrends(range: '24h' | '7d' = '24h', timezoneOffset: number = 0) {
+        return this.repository.getAlertTrends(range, timezoneOffset);
     }
 
     async getRecentEvents() {

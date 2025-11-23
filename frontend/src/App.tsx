@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { SignedIn, SignedOut, SignIn, SignUp, RedirectToSignIn, UserButton, useAuth } from "@clerk/clerk-react";
 import './App.css';
-import { getSummary, getTopDrivers, getResolved, getTrends, getEvents, resolveAlert, setAuthToken } from './api';
+import { getSummary, getTopDrivers, getResolved, getTrends, getEvents, resolveAlert, setAuthToken, getAlertDetails } from './api';
 import Leaderboard from './components/Leaderboard';
 import ResolvedTable from './components/ResolvedTable';
 import TrendGraph from './components/TrendGraph';
@@ -18,6 +18,7 @@ function Dashboard() {
     const [events, setEvents] = useState<any[]>([]);
     const [selectedAlertId, setSelectedAlertId] = useState<string | null>(null);
     const [selectedAlert, setSelectedAlert] = useState<any>(null);
+    const [trendRange, setTrendRange] = useState<'24h' | '7d'>('24h');
     const { getToken } = useAuth();
 
     const fetchData = async () => {
@@ -35,7 +36,7 @@ function Dashboard() {
             const resolvedData = await getResolved();
             setResolved(resolvedData);
 
-            const trendsData = await getTrends();
+            const trendsData = await getTrends(trendRange);
             setTrends(trendsData);
 
             const eventsData = await getEvents();
@@ -49,17 +50,21 @@ function Dashboard() {
         fetchData();
         const interval = setInterval(fetchData, 10000); // Refresh every 10s
         return () => clearInterval(interval);
-    }, []);
+    }, [trendRange]);
 
-    const handleAlertClick = (alertId: string) => {
-        // In a real app, fetch full details. For now, we might need a separate endpoint or just pass data if available.
-        // Let's assume we fetch it or find it in a list. 
-        // Since we don't have a full list in state, we might need to fetch details.
-        // For this demo, we'll just set the ID and let the modal fetch or show a placeholder.
-        // Ideally: const alert = await getAlertDetails(alertId);
-        setSelectedAlertId(alertId);
-        // Mocking the alert object for the modal for now, or fetching it if we had the endpoint ready in frontend
-        setSelectedAlert({ id: alertId, status: 'OPEN', severity: 'HIGH', sourceType: 'sensor', timestamp: new Date(), history: [], metadata: {} });
+    const handleRangeChange = (range: '24h' | '7d') => {
+        setTrendRange(range);
+    };
+
+    const handleAlertClick = async (alertId: string) => {
+        try {
+            setSelectedAlertId(alertId);
+            const alertDetails = await getAlertDetails(alertId);
+            setSelectedAlert(alertDetails);
+        } catch (error) {
+            console.error("Failed to fetch alert details:", error);
+            // Fallback or error handling
+        }
     };
 
     const handleResolve = async (id: string) => {
@@ -109,7 +114,7 @@ function Dashboard() {
 
             <div className="grid">
                 <div className="main-col">
-                    <TrendGraph data={trends} />
+                    <TrendGraph data={trends} range={trendRange} onRangeChange={handleRangeChange} />
                     <div style={{ marginTop: '20px' }}>
                         <Leaderboard drivers={topDrivers} onRowClick={(driverId) => console.log("Driver clicked:", driverId)} />
                     </div>

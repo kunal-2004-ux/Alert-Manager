@@ -166,29 +166,45 @@ export class AlertRepository extends BaseRepository<Alert, Prisma.AlertCreateInp
         });
     }
 
-    async getAlertTrends(days: number = 7) {
-        const cacheKey = `alert_trends_${days}`;
+    async getAlertTrends(range: '24h' | '7d' = '24h', timezoneOffset: number = 0) {
+        const cacheKey = `alert_trends_${range}_${timezoneOffset}`;
         const cached = dashboardCache.get(cacheKey);
         if (cached) return cached;
 
         const startDate = new Date();
-        startDate.setDate(startDate.getDate() - days);
+        let unit = 'hour';
 
-        // Using raw query for date truncation (PostgreSQL specific)
-        // Aggregating by day and status
-        const result = await prisma.$queryRaw`
-            SELECT 
-                DATE_TRUNC('day', timestamp) as "date",
-                status,
-                COUNT(*)::int as "count"
-            FROM "Alert"
-            WHERE timestamp >= ${startDate}
-            GROUP BY 1, 2
-            ORDER BY 1 ASC
-        `;
+        if (range === '7d') {
+            startDate.setDate(startDate.getDate() - 7);
+            unit = 'day';
+        } else {
+            startDate.setHours(startDate.getHours() - 24);
+            unit = 'hour';
+        }
 
-        dashboardCache.set(cacheKey, result, 300); // Cache trends for 5 minutes
-        return result;
+        // Actually, for simplicity and safety with $queryRaw:
+        console.log('getAlertTrends params:', { range, timezoneOffset, startDate, unit });
+
+        try {
+            const result = await prisma.$queryRawUnsafe(`
+                SELECT 
+                    (DATE_TRUNC('${unit}', timestamp - ($2 * interval '1 minute')) + ($2 * interval '1 minute')) as "date",
+                    status,
+                    COUNT(*)::int as "count"
+                FROM "Alert"
+                WHERE timestamp >= $1
+                GROUP BY 1, 2
+                ORDER BY 1 ASC
+            `, startDate, timezoneOffset);
+
+            console.log('getAlertTrends result:', result);
+
+            dashboardCache.set(cacheKey, result, 60); // Cache trends for 1 minute
+            return result;
+        } catch (error) {
+            console.error('getAlertTrends error:', error);
+            throw error;
+        }
     }
 
     async getRecentEvents(limit: number = 20) {

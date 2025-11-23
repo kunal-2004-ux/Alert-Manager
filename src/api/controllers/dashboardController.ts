@@ -53,7 +53,9 @@ export const getAlertDetails = async (req: Request, res: Response, next: NextFun
 
 export const getTrends = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const trends = await alertService.getDashboardTrends();
+        const range = (req.query.range as '24h' | '7d') || '24h';
+        const timezoneOffset = parseInt(req.query.timezoneOffset as string) || 0;
+        const trends = await alertService.getDashboardTrends(range, timezoneOffset);
         res.json(trends);
     } catch (error) {
         next(error);

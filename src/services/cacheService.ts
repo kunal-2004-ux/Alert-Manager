@@ -48,6 +48,14 @@ class CacheService {
         Logger.info('Invalidated dashboard summary cache');
     }
 
+    invalidateTrends(): void {
+        const keys = this.cache.keys().filter(k => k.startsWith('alert_trends_'));
+        if (keys.length > 0) {
+            this.del(keys);
+            Logger.info('Invalidated alert trends cache');
+        }
+    }
+
     invalidateAll(): void {
         this.flush();
         Logger.info('Invalidated all dashboard caches');
