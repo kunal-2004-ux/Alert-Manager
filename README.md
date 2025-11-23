@@ -16,19 +16,18 @@
 | 6 | **Rule Engine** |
 | 7 | **Simulation Panel** |
 | 8 | **Dashboard Features** |
-| 9 | **System Monitoring** |
-|10| **Setup Instructions** |
-|11| **Environment Variables** |
-|12| **API Documentation** |
-|13| **Database Schema** |
-|14| **Caching Strategy** |
-|15| **Background Job** |
-|16| **Tracing & Logging** |
-|17| **Testing** |
-|18| **Running End‑to‑End** |
-|20| **Troubleshooting** |
-|21| **Contributing** |
-|22| **License** |
+| 9 | **Setup Instructions** |
+|10| **Environment Variables** |
+|11| **API Documentation** |
+|12| **Database Schema** |
+|13| **Caching Strategy** |
+|14| **Background Job** |
+|15| **Tracing & Logging** |
+|16| **Testing** |
+|17| **Running End‑to‑End** |
+|18| **Troubleshooting** |
+|19| **Contributing** |
+|20| **License** |
 
 ---  
 
