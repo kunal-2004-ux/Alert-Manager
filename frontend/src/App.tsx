@@ -95,7 +95,7 @@ function Dashboard() {
                     </div>
                     <div className="card critical">
                         <h3>Critical</h3>
-                        <p>{summary.bySeverity.CRITICAL || 0}</p>
+                        <p>{summary.byStatus.ESCALATED || 0}</p>
                     </div>
                     <div className="card warning">
                         <h3>Warning</h3>
