@@ -17,22 +17,6 @@
 | 7 | **Simulation Panel** |
 | 8 | **Dashboard Features** |
 | 9 | **Setup Instructions** |
-|10| **Environment Variables** |
-|11| **API Documentation** |
-|12| **Database Schema** |
-|13| **Caching Strategy** |
-|14| **Background Job** |
-|15| **Tracing & Logging** |
-|16| **Testing** |
-|17| **Running End‑to‑End** |
-|18| **Troubleshooting** |
-|19| **Contributing** |
-|20| **License** |
-
----  
-
-## 1. Executive Summary  
-
 The **Intelligent Alert Escalation & Monitoring System** is a full‑stack, production‑grade platform that ingests alerts from multiple fleet‑monitoring modules (Safety, Compliance, Feedback), applies a **rule‑engine** to automatically **escalate**, **auto‑close**, or **resolve** them, and surfaces real‑time analytics on a modern React dashboard.  
 
 Key benefits:  
@@ -76,7 +60,59 @@ Key benefits:
 
 ## 3. Architecture Diagram  
 
-![Architecture Diagram](docs/architecture_diagram.png)
+### 1. System Architecture Diagram
+
+```mermaid
+flowchart TB
+    subgraph Frontend
+        UI[React Dashboard]
+        Sim[Simulation Panel]
+    end
+
+    subgraph Backend
+        API[Express API]
+        RuleEngine[Rule Engine (JSON)]
+        Cache[Node-Cache]
+        DB[(PostgreSQL)]
+        Worker[Background Worker]
+    end
+
+    subgraph Monitoring
+        Prom[Prometheus]
+        Graf[Grafana]
+        Loki[Loki Logs]
+        Otel[OpenTelemetry]
+    end
+
+    UI -->|HTTP/REST| API
+    Sim -->|HTTP/REST| API
+    
+    API -->|Read/Write| DB
+    API -->|Cache| Cache
+    API -->|Evaluate| RuleEngine
+    
+    Worker -->|Poll/Update| DB
+    Worker -->|Evaluate| RuleEngine
+    Worker -->|Invalidate| Cache
+
+    API -.->|Metrics| Prom
+    API -.->|Logs| Loki
+    API -.->|Traces| Otel
+    
+    Prom --> Graf
+    Loki --> Graf
+    Otel --> Graf
+```
+
+### 2. Alert Lifecycle Sequence Diagram
+
+
+
+![Alert Lifecycle Sequence Diagram](docs/alert_lifecycle_diagram.png)
+
+### 3. Dashboard Data Flow Diagram
+
+![Dashboard Data Flow Diagram](docs/dashboard_data_flow_diagram.png)
 
 ---  
 
@@ -127,8 +163,12 @@ The UI shows the current status badge and a **history timeline** for each alert.
 ```json
 {
   "overspeed": { "escalate_if_count": 3, "window_mins": 60 },
+  "harsh_acceleration": { "escalate_if_count": 3, "window_mins": 60 },
+  "harsh_braking": { "escalate_if_count": 3, "window_mins": 60 },
+  "sharp_turn": { "escalate_if_count": 3, "window_mins": 60 },
   "bad_review": { "escalate_if_count": 2, "window_mins": 1440 },
   "expiring_documents": { "auto_close_on": "document_renewed" },
+  "pending_service": { "auto_close_on": "service_completed" },
   "compliance": { "auto_close_if": "document_valid" }
 }
 ```
@@ -350,7 +390,54 @@ All tests should pass with `npm test`.
 
 ---  
 
-## 17. Running the System End‑to‑End  
+## 17. How to Demo This Project  
+
+Follow this script to showcase the full capabilities of the system during a live presentation.  
+
+### **Phase 1: Setup & Overview**  
+1. **Start the Stack**: Ensure Docker containers are up (`docker-compose up -d`) and both backend/frontend servers are running.  
+2. **Open Dashboard**: Navigate to `http://localhost:5173`.  
+3. **Show Summary Cards**: Point out the "Open Alerts", "Critical", and "Auto-Closed" cards. Explain that these update in real-time.  
+
+### **Phase 2: Intelligent Escalation (The "Wow" Factor)**  
+1. **Open Simulation Panel**: Click the "Simulate Alert" button (or use the panel on the right).  
+2. **Trigger Safety Alerts**:  
+   - Select **Source**: `overspeed`  
+   - **Driver ID**: `D-101`  
+   - Click **Create Alert** **3 times** in quick succession.  
+3. **Observe Escalation**:  
+   - Watch the **Events Stream** on the dashboard.  
+   - *Spoken Note*: "Notice how the first two alerts are OPEN. As soon as the third one hits, the system detects the pattern (3 in 1 hour) and automatically **ESCALATES** the alert to Critical."  
+   - Show the **Top Drivers** table updating to reflect `D-101` as a top offender.  
+
+### **Phase 3: Auto-Closure Logic**  
+1. **Trigger Compliance Alert**:  
+   - Select **Source**: `expiring_documents`  
+   - **Driver ID**: `D-202`  
+   - Click **Create Alert**.  
+2. **Simulate Resolution Event**:  
+   - Select **Source**: `expiring_documents`  
+   - **Metadata**: `{"event": "document_renewed"}`  
+   - Click **Create Alert**.  
+3. **Observe Auto-Close**:  
+   - The original alert status changes to **AUTO-CLOSED**.  
+   - *Spoken Note*: "The system listened for the renewal event and automatically closed the ticket without human intervention."  
+
+### **Phase 4: Manual Resolution & Drill-Down**  
+1. **Click an Alert**: Select any "OPEN" alert from the list.  
+2. **Explore Modal**:  
+   - Show the **History Timeline** (Created → Escalated).  
+   - Show **Metadata** (Speed, Location, etc.).  
+3. **Resolve**: Click the **"Resolve"** button.  
+   - Explain that this is for cases requiring manual operator review.  
+
+### **Phase 5: Analytics & Trends**  
+1. **Trend Graph**: Toggle between **24h** and **7d** views. Explain how this helps Ops teams spot peak alert times.  
+2. **Leaderboard**: Highlight the "Top Offenders" table, showing which drivers need coaching.  
+
+---  
+
+## 18. Running the System End‑to‑End  
 
 1. **Start Docker Compose** (includes DB, Prometheus, Grafana, Loki).  
 
