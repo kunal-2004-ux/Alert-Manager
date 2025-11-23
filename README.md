@@ -187,9 +187,9 @@ Follow these steps to set up the project locally.
 
 *(Placeholders for screenshots)*
 
-| Dashboard Overview | Alert Drill-Down |
-|:---:|:---:|
-| ![Dashboard Overview](docs/assets/dashboard_overview.png) | ![Dashboard Details](docs/assets/dashboard_details.png) |
+| Dashboard Overview | Dashboard Stats | Alert Drill-Down |
+|:---:|:---:|:---:|
+| ![Dashboard Overview](docs/assets/dashboard_overview.png) | ![Dashboard Stats](docs/assets/dashboard_details.png) | ![Alert Drill-Down](docs/assets/alert_drilldown.png) |
 
 ## Future Enhancements
 
