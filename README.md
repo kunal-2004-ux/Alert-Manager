@@ -1,505 +1,214 @@
-# 📈 Intelligent Alert Escalation & Monitoring System  
+# Intelligent Alert Escalation & Resolution System
 
-![License](https://img.shields.io/badge/license-MIT-green) ![Node.js](https://img.shields.io/badge/node-%3E%3D%2018-brightgreen) ![Docker](https://img.shields.io/badge/docker-%3E%3D%202.0-blue) ![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue)  
+A robust, automated backend system designed to manage, escalate, and resolve alerts in real-time, ensuring critical issues are addressed efficiently while minimizing alert fatigue.
 
----  
+## Overview
 
-## Table of Contents  
+The **Intelligent Alert Escalation & Resolution System** is a centralized platform for handling alerts from various sources, such as driver mobile apps and vehicle sensors. It solves the problem of manual alert tracking by providing automated workflows for ingestion, deduplication, escalation, and resolution.
 
-| # | Section |
-|---|---------|
-| 1 | **Executive Summary** |
-| 2 | **System Overview** |
-| 3 | **Architecture Diagram** |
-| 4 | **Modules Overview** |
-| 5 | **Alert Lifecycle** |
-| 6 | **Rule Engine** |
-| 7 | **Simulation Panel** |
-| 8 | **Dashboard Features** |
-| 9 | **Setup Instructions** |
-The **Intelligent Alert Escalation & Monitoring System** is a full‑stack, production‑grade platform that ingests alerts from multiple fleet‑monitoring modules (Safety, Compliance, Feedback), applies a **rule‑engine** to automatically **escalate**, **auto‑close**, or **resolve** them, and surfaces real‑time analytics on a modern React dashboard.  
+**Key Highlights:**
+*   **Automated Ingestion**: Seamlessly handle single or batch alert submissions.
+*   **Smart Rules Engine**: Configurable rules for auto-closing and escalating alerts based on metadata or time.
+*   **Real-time Dashboard**: API endpoints powering a dynamic frontend for monitoring trends and top offenders.
+*   **Audit Trails**: Full history tracking for every alert state change for compliance and debugging.
+*   **Scalable Architecture**: Built with Node.js, TypeScript, and PostgreSQL to handle high throughput.
 
-Key benefits:  
+## Architecture & Tech Stack
 
-| ✅ | Benefit |
-|---|---------|
-| **Real‑time visibility** | Trend graphs, top‑offender leader‑board, recent event stream |
-| **Automation** | Rules defined in JSON/YAML drive escalation & auto‑close without code changes |
-| **Observability** | Prometheus metrics, Grafana dashboards, Loki logs, OpenTelemetry tracing |
-| **Scalability** | Stateless API, Docker‑compose, caching via Node‑Cache, background worker |
-| **Developer‑friendly** | TypeScript, Prisma ORM, comprehensive tests, CI‑ready |
+The system follows a modular **Layered Architecture** (Controller-Service-Repository) to ensure separation of concerns and maintainability. Background workers handle asynchronous tasks like auto-closure to keep the API responsive.
 
----  
+**Core Technologies:**
+*   **Runtime**: Node.js
+*   **Language**: TypeScript
+*   **Framework**: Express.js
+*   **Database**: PostgreSQL
+*   **ORM**: Prisma
+*   **Authentication**: Clerk
+*   **Scheduling**: node-cron
+*   **Logging & Monitoring**: Winston, Prometheus
 
-## 2. System Overview  
+**Frontend:**
+*   **Framework**: React (Vite)
+*   **Styling**: CSS Modules / Vanilla CSS
+*   **Charts**: Recharts
 
-```
-+-------------------+          +-------------------+          +-------------------+
-|   Frontend (React|  HTTP    |   Backend (Node) |  DB      |   PostgreSQL      |
-|   + Recharts)    | <------> |   Express + TS   | <------> |   Prisma ORM      |
-+-------------------+          +-------------------+          +-------------------+
-        ^                               ^                               ^
-        |                               |                               |
-        |                               |                               |
-        |                               |                               |
-        |                               |                               |
-        |                               |                               |
-   +------------+                 +------------+                +------------+
-   | Simulation |   Event Bus    | Rule Engine|   Cache (Node‑Cache)   |
-   | Panel      | <------------> | (JSON)    | <----------------------|
-   +------------+                +------------+                       |
-        ^                                                          |
-        |                                                          |
-   +------------+                                            +------------+
-   | Background |  Cron (5‑min)   | Auto‑Close Worker      | Monitoring |
-   | Worker     | <-------------> | (Escalation Rules)     | (Prom/ Graf)|
-   +------------+                                            +------------+
-```
+## Features
 
----  
+*   **Alert Management**
+    *   Ingest alerts with severity levels and custom metadata.
+    *   Deduplicate incoming alerts to prevent noise.
+    *   Manually resolve alerts with audit logging.
+*   **Automated Workflows**
+    *   **Auto-Closure**: Automatically close alerts if specific conditions are met (e.g., "document_valid" becomes true) or after a set time.
+    *   **Escalation**: (Planned) Escalate alerts based on severity or duration.
+*   **Dashboard Analytics**
+    *   **Summary Cards**: Real-time counts of Open, Escalated, and Resolved alerts.
+    *   **Top Drivers**: Identify drivers with the most frequent alerts.
+    *   **Trends**: Visualizing alert volume over time.
+    *   **Recent Activity**: Live feed of the latest system events.
+*   **Security & Reliability**
+    *   Secure API endpoints using Clerk authentication.
+    *   Comprehensive error handling and logging.
 
-## 3. Architecture Diagram  
-
-### 1. System Architecture Diagram
-
-```mermaid
-flowchart TB
-    subgraph Frontend
-        UI[React Dashboard]
-        Sim[Simulation Panel]
-    end
-
-    subgraph Backend
-        API[Express API]
-        RuleEngine[Rule Engine (JSON)]
-        Cache[Node-Cache]
-        DB[(PostgreSQL)]
-        Worker[Background Worker]
-    end
-
-    subgraph Monitoring
-        Prom[Prometheus]
-        Graf[Grafana]
-        Loki[Loki Logs]
-        Otel[OpenTelemetry]
-    end
-
-    UI -->|HTTP/REST| API
-    Sim -->|HTTP/REST| API
-    
-    API -->|Read/Write| DB
-    API -->|Cache| Cache
-    API -->|Evaluate| RuleEngine
-    
-    Worker -->|Poll/Update| DB
-    Worker -->|Evaluate| RuleEngine
-    Worker -->|Invalidate| Cache
-
-    API -.->|Metrics| Prom
-    API -.->|Logs| Loki
-    API -.->|Traces| Otel
-    
-    Prom --> Graf
-    Loki --> Graf
-    Otel --> Graf
-```
-
-### 2. Alert Lifecycle Sequence Diagram
-
-
-
-![Alert Lifecycle Sequence Diagram](docs/alert_lifecycle_diagram.png)
-
-### 3. Dashboard Data Flow Diagram
-
-![Dashboard Data Flow Diagram](docs/dashboard_data_flow_diagram.png)
-
----  
-
-## 4. Modules Overview  
-
-| Module | Responsibility | Example Alerts |
-|--------|----------------|----------------|
-| **Safety** | Detect unsafe driving events (overspeed, harsh braking) | `overspeed`, `harsh_braking` |
-| **Compliance** | Verify driver/document compliance | `expiring_documents`, `pending_service` |
-| **Feedback** | Capture driver/passenger feedback | `bad_review`, `sharp_turn` |
-
-All modules POST to **`/alerts`** with a unified payload:
-
-```json
-{
-  "alertId": "uuid",
-  "sourceType": "overspeed",
-  "severity": "CRITICAL",
-  "timestamp": "2025-11-23T10:12:00Z",
-  "status": "OPEN",
-  "metadata": { "driverId": "D123", "speed": 120 }
-}
-```
-
----  
-
-## 5. Alert Lifecycle  
+## Project Folder Structure
 
 ```
-OPEN → ESCALATED → AUTO‑CLOSED → RESOLVED
+/
+├── src/
+│   ├── api/                # API Layer
+│   │   ├── controllers/    # Request handlers
+│   │   ├── routes/         # Route definitions
+│   │   └── middlewares/    # Auth and validation middlewares
+│   ├── services/           # Business logic layer
+│   ├── repositories/       # Database access layer
+│   ├── workers/            # Background jobs (e.g., AlertProcessor)
+│   ├── rules/              # Configuration for alert handling rules
+│   ├── models/             # TypeScript interfaces/types
+│   └── utils/              # Helper functions (Logger, etc.)
+├── prisma/                 # Database schema and migrations
+├── frontend/               # React frontend application
+├── tests/                  # Unit and integration tests
+└── package.json            # Project dependencies and scripts
 ```
 
-| Transition | Trigger |
-|------------|---------|
-| **OPEN → ESCALATED** | Rule engine detects count/window threshold |
-| **ESCALATED → AUTO‑CLOSED** | Auto‑close rule (e.g., document renewed) |
-| **ANY → RESOLVED** | Manual UI action (`resolveAlert`) |
-
-The UI shows the current status badge and a **history timeline** for each alert.
-
----  
-
-## 6. Rule Engine  
-
-- **Location:** `src/rules/rules.json` (editable at runtime)  
-- **Format:** Simple JSON DSL  
-
-```json
-{
-  "overspeed": { "escalate_if_count": 3, "window_mins": 60 },
-  "harsh_acceleration": { "escalate_if_count": 3, "window_mins": 60 },
-  "harsh_braking": { "escalate_if_count": 3, "window_mins": 60 },
-  "sharp_turn": { "escalate_if_count": 3, "window_mins": 60 },
-  "bad_review": { "escalate_if_count": 2, "window_mins": 1440 },
-  "expiring_documents": { "auto_close_on": "document_renewed" },
-  "pending_service": { "auto_close_on": "service_completed" },
-  "compliance": { "auto_close_if": "document_valid" }
-}
-```
-
-**How it works**
-
-1. When a new alert is saved, `AlertService.applyEscalationRules` reads the DSL.  
-2. It queries recent alerts of the same `sourceType` within the defined window.  
-3. If the count exceeds the threshold, status changes to **ESCALATED**.  
-4. Background worker runs `applyAutoCloseRules` every 5 min to auto‑close matching alerts.
-
----  
-
-## 7. Simulation Panel  
-
-Located at `frontend/src/components/SimulationPanel.tsx`.  
-
-- Allows developers / QA to **create synthetic alerts** quickly.  
-- Provides a dropdown for source type, severity, driver ID, and custom metadata.  
-- After creation it calls `POST /alerts` and triggers an immediate dashboard refresh via `onAlertCreated`.  
-
----  
-
-## 8. Dashboard Features  
-
-| Feature | Description |
-|---------|-------------|
-| **Summary Cards** | Open, Critical, Warning, Info, Auto‑Closed counts |
-| **Top Drivers Leader‑board** | Shows drivers with most open/escalated alerts |
-| **Trend Graph** | Line chart (24 h / 7 d) of alert counts per status |
-| **Events Stream** | Real‑time audit‑log feed (created, escalated, auto‑closed, resolved) |
-| **Alert Modal** | Click an alert → modal with history, metadata, manual resolve |
-| **Range Selector** | Buttons to toggle 24 h vs 7 d view (frontend passes `range` query param) |
-| **Responsive** | Mobile‑first layout, dark‑mode ready |
-
----  
-
-## 9. Setup Instructions  
-
-### Prerequisites  
-
-| Tool | Minimum Version |
-|------|-----------------|
-| **Node.js** | 18.x |
-| **npm** | 9.x |
-| **Docker & Docker‑Compose** | 2.0+ |
-| **PostgreSQL** | 13 (Docker will spin it up) |
-
-### Backend  
-
-```bash
-# Clone the repo (already done)
-cd moveinsync_assignment
-
-# Install deps
-npm ci
-
-# Create .env (see section 10)
-cp .env.example .env
-# edit .env as needed
-
-# Run migrations & seed (Prisma)
-npx prisma migrate dev --name init
-npx prisma db seed   # optional demo data
-
-# Start the API
-npm run dev          # runs ts-node-dev on src/app.ts
-```
-
-### Frontend  
-
-```bash
-cd frontend
-npm ci
-npm run dev          # Vite dev server on http://localhost:5173
-```
-
-### Docker‑Compose (All‑in‑One)  
-
-```bash
-docker-compose up --build
-# Services:
-#   - api   : http://localhost:3000
-#   - web  : http://localhost:5173
-#   - db   : PostgreSQL
-#   - prometheus, grafana, loki
-```
-
----  
-
-## 10. Environment Variable Examples  
-
-```dotenv
-# .env (backend)
-DATABASE_URL=postgresql://postgres:password@db:5432/moveinsync
-PORT=3000
-NODE_ENV=development
-
-# Clerk (authentication)
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_...
-CLERK_SECRET_KEY=sk_test_...
-
-# Monitoring
-PROMETHEUS_PORT=9100
-OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
-```
-
----  
-
-## 11. API Documentation  
-
-| Method | Endpoint | Description | Request Body | Response |
-|--------|----------|-------------|--------------|----------|
-| `POST` | `/alerts` | Ingest a new alert | See **Alert Payload** above | `{ alert: Alert }` |
-| `GET` | `/dashboard/summary` | Counts by status & severity | – | `{ byStatus, bySeverity }` |
-| `GET` | `/dashboard/top-drivers` | Top‑5 drivers with open/escalated alerts | – | `{ drivers: [{ driverId, openAlerts, escalatedAlerts, totalAlerts }], updatedAt }` |
-| `GET` | `/dashboard/trends?range=24h|7d&timezoneOffset=-330` | Time‑series data for the selected range | – | `[{ date, OPEN, ESCALATED, AUTO_CLOSED, RESOLVED }]` |
-| `GET` | `/dashboard/events` | Recent audit‑log events (limit 20) | – | `[{ id, type, timestamp, details }]` |
-| `GET` | `/dashboard/alerts/:id` | Full alert details + history | – | `{ alert, history }` |
-| `PATCH`| `/alerts/:id/resolve` | Manual resolution | – | `{ alert }` |
-| `GET` | `/health` | Liveness probe | – | `{ status: "ok" }` |
-
-*All endpoints are protected by Clerk middleware (`authMiddleware.ts`).*
-
----  
-
-## 12. Database Schema  
-
-```prisma
-model Alert {
-  id          String      @id @default(uuid())
-  sourceType  String
-  severity    String
-  timestamp   DateTime    @default(now())
-  status      AlertStatus @default(OPEN)
-  metadata    Json?
-  fingerprint String?     @unique
-  history     AlertHistory[]
-}
-
-model AlertHistory {
-  id        String   @id @default(uuid())
-  alertId   String
-  status    AlertStatus
-  changedAt DateTime @default(now())
-  reason    String?
-  alert     Alert    @relation(fields: [alertId], references: [id])
-}
-
-model AuditLog {
-  id        String   @id @default(uuid())
-  type      String
-  timestamp DateTime @default(now())
-  details   Json
-}
-```
-
-`AlertStatus` enum: `OPEN`, `ESCALATED`, `AUTO_CLOSED`, `RESOLVED`.
-
----  
-
-## 13. Caching Strategy  
-
-- **Node‑Cache** (`src/services/cacheService.ts`) – in‑memory, TTL = 30 s (dashboard data)  
-- **Cache Keys**  
-  - `alert_summary`  
-  - `top_drivers`  
-  - `alert_trends_{range}`  
-- **Invalidation**  
-  - After **create**, **update**, **resolve** → `dashboardCache.invalidate*()` (see `alertService.ts`)  
-  - Background worker also clears `alert_trends` when auto‑close runs  
-
-Cache hit/miss metrics are exposed to Prometheus (`cache_hits_total`, `cache_misses_total`).
-
----  
-
-## 14. Background Job  
-
-File: `src/jobs/autoCloseWorker.ts` (started via `node-cron` in `src/app.ts`).  
-
-- Runs every **5 minutes**.  
-- Steps:  
-  1. Pull alerts with status `OPEN` or `ESCALATED`.  
-  2. For each alert, evaluate auto‑close rules from `rules.json`.  
-  3. If condition met → update status to `AUTO_CLOSED`, insert `AlertHistory` entry, emit audit log.  
-  4. Invalidate `alert_trends` cache.  
-
----  
-
-## 15. Tracing & Logging  
-
-- **Logging**: `src/utils/logger.ts` – Winston JSON logger (writes to console & Loki).  
-- **Tracing**: OpenTelemetry SDK configured in `src/tracing.ts`.  
-  - Spans for each API request, rule‑engine evaluation, background job.  
-  - Exported to OTLP collector (Grafana Loki can ingest traces).  
-
----  
-
-## 16. Testing Instructions  
-
-```bash
-# Unit tests (Jest)
-npm run test
-
-# Integration tests (Supertest + in‑memory SQLite)
-npm run test:integration
-
-# End‑to‑end (Playwright) – optional
-npm run e2e
-```
-
-Key test suites:  
-
-- `alertService.test.ts` – rule engine, cache invalidation.  
-- `dashboardController.test.ts` – trend aggregation, range handling.  
-- `worker.test.ts` – auto‑close logic.  
-
-All tests should pass with `npm test`.
-
----  
-
-## 17. How to Demo This Project  
-
-Follow this script to showcase the full capabilities of the system during a live presentation.  
-
-### **Phase 1: Setup & Overview**  
-1. **Start the Stack**: Ensure Docker containers are up (`docker-compose up -d`) and both backend/frontend servers are running.  
-2. **Open Dashboard**: Navigate to `http://localhost:5173`.  
-3. **Show Summary Cards**: Point out the "Open Alerts", "Critical", and "Auto-Closed" cards. Explain that these update in real-time.  
-
-### **Phase 2: Intelligent Escalation (The "Wow" Factor)**  
-1. **Open Simulation Panel**: Click the "Simulate Alert" button (or use the panel on the right).  
-2. **Trigger Safety Alerts**:  
-   - Select **Source**: `overspeed`  
-   - **Driver ID**: `D-101`  
-   - Click **Create Alert** **3 times** in quick succession.  
-3. **Observe Escalation**:  
-   - Watch the **Events Stream** on the dashboard.  
-   - *Spoken Note*: "Notice how the first two alerts are OPEN. As soon as the third one hits, the system detects the pattern (3 in 1 hour) and automatically **ESCALATES** the alert to Critical."  
-   - Show the **Top Drivers** table updating to reflect `D-101` as a top offender.  
-
-### **Phase 3: Auto-Closure Logic**  
-1. **Trigger Compliance Alert**:  
-   - Select **Source**: `expiring_documents`  
-   - **Driver ID**: `D-202`  
-   - Click **Create Alert**.  
-2. **Simulate Resolution Event**:  
-   - Select **Source**: `expiring_documents`  
-   - **Metadata**: `{"event": "document_renewed"}`  
-   - Click **Create Alert**.  
-3. **Observe Auto-Close**:  
-   - The original alert status changes to **AUTO-CLOSED**.  
-   - *Spoken Note*: "The system listened for the renewal event and automatically closed the ticket without human intervention."  
-
-### **Phase 4: Manual Resolution & Drill-Down**  
-1. **Click an Alert**: Select any "OPEN" alert from the list.  
-2. **Explore Modal**:  
-   - Show the **History Timeline** (Created → Escalated).  
-   - Show **Metadata** (Speed, Location, etc.).  
-3. **Resolve**: Click the **"Resolve"** button.  
-   - Explain that this is for cases requiring manual operator review.  
-
-### **Phase 5: Analytics & Trends**  
-1. **Trend Graph**: Toggle between **24h** and **7d** views. Explain how this helps Ops teams spot peak alert times.  
-2. **Leaderboard**: Highlight the "Top Offenders" table, showing which drivers need coaching.  
-
----  
-
-## 18. Running the System End‑to‑End  
-
-1. **Start Docker Compose** (includes DB, Prometheus, Grafana, Loki).  
-
-   ```bash
-   docker-compose up -d
-   ```
-
-2. **Run Backend**  
-
-   ```bash
-   npm run dev   # http://localhost:3000
-   ```
-
-3. **Run Frontend**  
-
-   ```bash
-   cd frontend
-   npm run dev   # http://localhost:5173
-   ```
-
-4. **Create Sample Alerts** via the **Simulation Panel** or `curl`:
-
-   ```bash
-   curl -X POST http://localhost:3000/alerts \
-        -H "Content-Type: application/json" \
-        -d '{"sourceType":"overspeed","severity":"CRITICAL","timestamp": "2025-11-23T10:00:00Z","status":"OPEN","metadata":{"driverId":"D001","speed":120}}'
-   ```
-
-5. **Watch the Dashboard** – open the web UI, see the cards update, the trend graph shift, and the events stream display the new alert.  
-
-6. **Observe Monitoring** – open Grafana (`http://localhost:3001`) and view the *Alert Service* dashboard (pre‑built in `docker-compose.yml`).  
-
----  
-
-## 18. Troubleshooting  
-
-| Symptom | Likely Cause | Fix |
-|---------|--------------|-----|
-| **Dashboard shows 0 alerts** | DB not seeded or API not reachable | Verify `DATABASE_URL`, run `npx prisma migrate dev`, check backend logs |
-| **Trend graph empty** | `timezoneOffset` missing or `range` param wrong | Ensure frontend sends `range` and `timezoneOffset`; check `alertRepository.getAlertTrends` |
-| **Cache never invalidates** | `dashboardCache.invalidate*` not called after alert creation | Confirm `alertService.createAlert` flow; add `console.log` or logger statements |
-| **Prometheus metrics missing** | `/metrics` endpoint not exposed | Ensure `express-prometheus-middleware` is imported in `src/app.ts` |
-| **Background job not running** | `node-cron` not started or process exited | Check `npm run dev` console for `Cron job started`; verify timezone of host |
-| **Authentication errors** | Clerk keys missing or expired | Set `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` and `CLERK_SECRET_KEY` in `.env` |
-| **Docker containers fail** | Port conflict or missing env vars | Run `docker-compose logs` to see error; adjust host ports or env file |
-
----  
-
-## 19. Contributing  
-
-1. Fork the repository.  
-2. Create a feature branch (`git checkout -b feat/your-feature`).  
-3. Follow the **coding style** (Prettier + ESLint).  
-4. Write tests for any new logic.  
-5. Submit a PR with a clear description and screenshots if UI changes.  
-
----  
-
-## 20. License  
-
-MIT © 2025 
-
----  
-
-
+## Setup Instructions
+
+Follow these steps to set up the project locally.
+
+### Prerequisites
+*   Node.js (v18+)
+*   PostgreSQL
+*   npm or yarn
+
+### Backend Setup
+
+1.  **Clone the repository:**
+    ```bash
+    git clone <repository-url>
+    cd intelligent-alert-escalation-system
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+3.  **Configure Environment Variables:**
+    Create a `.env` file in the root directory:
+    ```env
+    PORT=3000
+    DATABASE_URL="postgresql://user:password@localhost:5432/alert_db"
+    CLERK_SECRET_KEY="your_clerk_secret_key"
+    CLERK_PUBLISHABLE_KEY="your_clerk_publishable_key"
+    ```
+
+4.  **Database Migration:**
+    ```bash
+    npx prisma migrate dev --name init
+    ```
+
+5.  **Run the Server:**
+    ```bash
+    npm run dev
+    ```
+
+### Frontend Setup
+
+1.  **Navigate to frontend directory:**
+    ```bash
+    cd frontend
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+3.  **Run the Frontend:**
+    ```bash
+    npm run dev
+    ```
+
+## API Documentation
+
+### Alerts
+
+*   **Create Alert**
+    *   `POST /api/alerts`
+    *   **Body**:
+        ```json
+        {
+          "driverId": "driver_123",
+          "sourceType": "overspeeding",
+          "severity": "high",
+          "metadata": { "speed": 120, "limit": 80 }
+        }
+        ```
+*   **Batch Create**
+    *   `POST /api/alerts/batch`
+    *   **Body**: Array of alert objects.
+*   **Resolve Alert**
+    *   `PATCH /api/alerts/:id/resolve`
+    *   **Body**: `{"status": "RESOLVED"}` (optional, implied)
+
+### Dashboard (Protected)
+
+*   **Get Summary**
+    *   `GET /api/dashboard/summary`
+    *   **Response**: `{ "open": 10, "resolved": 5, "escalated": 2 }`
+*   **Get Top Drivers**
+    *   `GET /api/dashboard/top-drivers`
+*   **Get Trends**
+    *   `GET /api/dashboard/trends`
+
+## How the System Works
+
+### 1. Alert Creation Flow
+1.  Client sends `POST /api/alerts`.
+2.  **Controller** validates input.
+3.  **Service** checks for duplicates (same `fingerprint` within a time window).
+4.  **Repository** saves the alert to PostgreSQL with status `OPEN`.
+
+### 2. Auto-Closure Flow (Worker)
+1.  `AlertProcessor` runs periodically (via `node-cron`).
+2.  Fetches all `OPEN` alerts.
+3.  Loads rules from `src/rules/alertRules.json`.
+4.  Checks conditions:
+    *   **Time-based**: Is `(now - created_at) > auto_close_after_mins`?
+    *   **Condition-based**: Does `alert.metadata` satisfy `auto_close_if`?
+5.  If yes, updates status to `AUTO_CLOSED` and appends to history.
+
+### 3. Recent Activity Rendering
+1.  Frontend polls (or uses Socket.io) `GET /api/dashboard/events`.
+2.  Backend queries `AuditLog` table for the latest actions.
+3.  Returns a list of events (e.g., "Alert #123 auto-closed", "User X resolved Alert #456").
+
+## Demo
+
+*(Placeholders for screenshots)*
+
+| Dashboard Overview | Alert Drill-Down |
+|:---:|:---:|
+| ![Dashboard Placeholder](https://via.placeholder.com/600x300?text=Dashboard+Screenshot) | ![Drilldown Placeholder](https://via.placeholder.com/600x300?text=Alert+Details+Screenshot) |
+
+## Future Enhancements
+
+1.  **Webhooks Integration**: Notify external systems (Slack, PagerDuty) on high-severity alerts.
+2.  **Advanced Rule Engine**: Support complex boolean logic (AND/OR) for auto-closure conditions.
+3.  **Role-Based Access Control (RBAC)**: Granular permissions for Admin vs. Support staff.
+4.  **AI-Powered Insights**: Anomaly detection to predict potential high-risk drivers.
+5.  **Export Functionality**: Download alert reports as CSV/PDF.
+6.  **Multi-Tenancy**: Support multiple organizations within the same instance.
+
+## Contributing
+
+Contributions are welcome! Please follow these steps:
+1.  Fork the repository.
+2.  Create a feature branch (`git checkout -b feature/amazing-feature`).
+3.  Commit your changes (`git commit -m 'Add amazing feature'`).
+4.  Push to the branch (`git push origin feature/amazing-feature`).
+5.  Open a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
